@@ -17,8 +17,8 @@
         <button id="german" class="flag" @click="toGerman"></button>
         <button id="english" class="flag" @click="toEnglish"></button>
         <vueper-slides class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
-            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" >
-            <vueper-slide :key="'intro'">
+            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="updateIndex" @input.native="validate">
+            <vueper-slide :key="'intro'" >
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -28,7 +28,7 @@
                             <p>{{ language.introThanks }}</p>
                             <p>{{ language.following }}</p>
                             <p>{{ language.protection }}</p>
-                            <p id="consent"><input type="checkbox" v-model="consent" /> {{ language.consent }}</p>
+                            <p id="consent"><input type="checkbox"/> {{ language.consent }}</p>
                         </div>
                     </div>
                 </template>
@@ -43,9 +43,9 @@
                             <p>{{ language.basicIntro }}</p>
                             <label for="name">Name</label>
                             <input type="text" id="name" />
-                            <label for="age">Name</label>
+                            <label for="age">Age</label>
                             <input type="text" id="age" />
-                            <label for="exp">Name</label>
+                            <label for="exp">Random</label>
                             <input type="text" id="exp" />
                         </div>
                     </div>
@@ -73,9 +73,8 @@
                             <h1>{{ language.conclusion }}</h1>
                         </div>
                         <div class="vueperslide__content">
-                            <p>Thanks for having completed the experiment, your answers have been recorded.</p>
-                            <p>Please indicate below how many different speakers you have heard in the preceding x
-                                recordings:</p>
+                            <p>{{ language.conclusionThanks }} </p>
+                            <p>{{ language.concludingQuestion }}</p>
                         </div>
                     </div>
                 </template>
@@ -86,9 +85,10 @@
 <script>
     var app5 = new Vue({
         el: '#app',
+        canProceed: false,
         data: {
-            consent: false,
             message: 'Hello Vue.js!',
+            current: 0,
             german: {
                 intro: 'Einführung',
                 introThanks: 'Vielen Dank, dass Sie sich die Zeit nehmen, an diesem Experiment teilzunehmen. Die Durchführung dauert etwa 15 Minuten.',
@@ -98,7 +98,9 @@
                 basic: 'Angaben zum Probanden',
                 basicIntro: '',
                 experimentIntro: '',
-                conclusion: 'Abschließend'
+                conclusion: 'Abschließend',
+                conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben, Ihre Antworten wurden übermittelt.',
+                concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen x Aufnahmen gehört haben:'
             },
 
             english: {
@@ -110,11 +112,33 @@
                 basic: 'Participant\'s basic information',
                 basicIntro: '',
                 experimentIntro: 'Please listen to the following recording',
-                conclusion: 'Conclusion'
+                conclusion: 'Conclusion',
+                conclusionThanks: 'Thanks for having completed the experiment, your answers have been recorded.',
+                concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding x recordings:'
 
             },
             language: this.english,
             $nextArrow: null,
+            validators: [
+                function() {
+                    //User needs to consent to the usage of their data
+                    let box = document.querySelectorAll('.vueperslide--active')[0].querySelector('input[type=checkbox]');
+                    return box.checked;
+                },
+                function () {
+                    //All fields need to be filled or ticked for the form to be valid
+                    let value = true;
+                    let inputs = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('input[type=text]');
+
+                    let matchers = {name: /^[\w\s]+$/, age: /^\d{2}$/, exp: /^test.*$/}
+                    for(input of inputs){
+                        if(!matchers[input.id].test(input.value)){
+                            value = false
+                        }
+                    }
+                    return value;
+                }
+            ]
         },
         methods: {
             postMessage: function () {
@@ -137,9 +161,12 @@
                 document.querySelectorAll('.vueperslides__arrow--prev')[0].remove();
                 this.$nextArrow.style.display = 'none'
             },
-        },
-        watch: {
-            consent: function(value, oldValue){
+            updateIndex: function(e){
+                this.current = e.currentSlide.index;
+                this.$nextArrow.style.display = 'none';
+            },
+            validate: function(){
+                let value = this.validators[this.current]();
                 this.$nextArrow.style.display = value ? '' : 'none';
             }
         },
