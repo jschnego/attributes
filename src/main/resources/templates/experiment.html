@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Vue Research</title>
+    <script src="../static/lib/vue.js"></script>
+    <script src="../static/lib/vueperslides.js"></script>
+    <link href="../static/css/vueperslides.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <div id="app" class="centered">
+        <button id="german" class="flag" @click="toGerman"></button>
+        <button id="english" class="flag" @click="toEnglish"></button>
+        <vueper-slides class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
+            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" >
+            <vueper-slide :key="'intro'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>{{ language.intro }}</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.introThanks }}</p>
+                            <p>{{ language.following }}</p>
+                            <p>{{ language.protection }}</p>
+                            <p id="consent"><input type="checkbox" v-model="consent" /> {{ language.consent }}</p>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'basic'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>{{ language.basic }}</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.basicIntro }}</p>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" />
+                            <label for="age">Name</label>
+                            <input type="text" id="age" />
+                            <label for="exp">Name</label>
+                            <input type="text" id="exp" />
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'audio'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>Experiment</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.experimentIntro }}</p>
+                            <audio controls>
+                                <source src="../static/audio/bell.wav" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'conclusion'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>{{ language.conclusion }}</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>Thanks for having completed the experiment, your answers have been recorded.</p>
+                            <p>Please indicate below how many different speakers you have heard in the preceding x
+                                recordings:</p>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+        </vueper-slides>
+    </div>
+</body>
+<script>
+    var app5 = new Vue({
+        el: '#app',
+        data: {
+            consent: false,
+            message: 'Hello Vue.js!',
+            german: {
+                intro: 'Einführung',
+                introThanks: 'Vielen Dank, dass Sie sich die Zeit nehmen, an diesem Experiment teilzunehmen. Die Durchführung dauert etwa 15 Minuten.',
+                following: 'Auf der folgenden Seite werden zunächst einige allgemeine Informationen abgefragt. Um am Experiment teilzunehmen, müssen Sie zunächst zustimmen, dass Sie sich damit einverstanden erklären, dass die gemachten Angaben zu Forschungszwecken verwendet und für spätere Referenz gespeichert werden.',
+                protection: 'The gesammelten Daten sind anonym und in keiner Weise mit Ihrer Person in Verbindung zu bringen, sie dienen einzig als Mittel, um auszuwerten, wie die Antworten sich für bestimmte Personengruppen unterscheiden. Während der Durchführung des Experiments (etwa 4 Wochen) werden die Daten auf einem Server in der EU und danach auf dem Gerät des Erstellers gespeichert.',
+                consent: 'Ich willige ein, dass die von mir im folgenden Experiment erhobenen Antworten für akademische Zwecke genutzt und anschließend aufgewahrt werden dürfen',
+                basic: 'Angaben zum Probanden',
+                basicIntro: '',
+                experimentIntro: '',
+                conclusion: 'Abschließend'
+            },
+
+            english: {
+                intro: 'Introduction',
+                introThanks: 'Thanks for taking the time to participate in this experiment. Completing it takes about 15 minutes.',
+                following: 'In the following slides, you will first be asked to provide some basic information. To take the experiment, you will have to consent to your data being used for research purposes and stored for later reference.',
+                protection: 'The collected data is anonymized and not in any way assignable to you personally, it serves solely as a means to spot how answers vary across different demographics. It is stored on a server in the EU for the time of this experiment (about 4 weeks), and on the researcher\'s personal device afterwards.',
+                consent: 'I give my consent that the answers I give in the following experiment may be used for academic purposes and stored afterwards',
+                basic: 'Participant\'s basic information',
+                basicIntro: '',
+                experimentIntro: 'Please listen to the following recording',
+                conclusion: 'Conclusion'
+
+            },
+            language: this.english,
+            $nextArrow: null,
+        },
+        methods: {
+            postMessage: function () {
+                fetch('/api/store', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: `{'message' : '${this.message}'}`
+                })
+            },
+            toGerman: function () {
+                this.language = this.german;
+            },
+            toEnglish: function () {
+                this.language = this.english;
+            },
+            wrapArrow: function () {
+                this.$nextArrow = document.querySelectorAll('.vueperslides__arrow--next')[0];
+                document.querySelectorAll('.vueperslides__arrow--prev')[0].remove();
+                this.$nextArrow.style.display = 'none'
+            },
+        },
+        watch: {
+            consent: function(value, oldValue){
+                this.$nextArrow.style.display = value ? '' : 'none';
+            }
+        },
+        created: function () {
+            this.language = this.english;
+        }
+    });
+</script>
+
+
+</html>
