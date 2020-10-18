@@ -17,7 +17,7 @@
         <button id="german" class="flag" @click="toGerman"></button>
         <button id="english" class="flag" @click="toEnglish"></button>
         <vueper-slides class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
-            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="updateIndex" @input.native="validate">
+            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide" @input.native="validate">
             <vueper-slide :key="'intro'" >
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
@@ -41,24 +41,113 @@
                         </div>
                         <div class="vueperslide__content">
                             <p>{{ language.basicIntro }}</p>
-                            <label for="name">Name</label>
-                            <input type="text" id="name" />
-                            <label for="age">Age</label>
+			    <label for="age">{{ language.age }}</label>
                             <input type="text" id="age" />
-                            <label for="exp">Random</label>
-                            <input type="text" id="exp" />
+			    <label for="primary">{{ language.primary }}</label>
+                            <input type="text" id="primary" />
+			    <label for="profession">{{ language.profession }}</label>
+                            <input type="text" id="profession" />
+			    <label for="contact">{{ language.contact }}</label>
+                            <input type="text" id="contact" />
                         </div>
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide :key="'audio'">
-                <template v-slot:content>
+            <vueper-slide :key="'exp-intro'">
+					<template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
                             <h1>Experiment</h1>
                         </div>
                         <div class="vueperslide__content">
                             <p>{{ language.experimentIntro }}</p>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'number-1'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>#1</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.listen }}</p>
+                            <audio controls>
+                                <source src="../static/audio/bell.wav" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'number-2'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>#2</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.listen }}</p>
+                            <audio controls>
+                                <source src="../static/audio/bell.wav" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'number-3'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>#3</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.listen }}</p>
+                            <audio controls>
+                                <source src="../static/audio/bell.wav" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'number-4'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>#4</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.listen }}</p>
+                            <audio controls>
+                                <source src="../static/audio/bell.wav" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'number-5'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>#5</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.listen }}</p>
+                            <audio controls>
+                                <source src="../static/audio/bell.wav" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'number-6'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>#6</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.listen }}</p>
                             <audio controls>
                                 <source src="../static/audio/bell.wav" type="audio/mpeg">
                             </audio>
@@ -96,8 +185,13 @@
                 protection: 'The gesammelten Daten sind anonym und in keiner Weise mit Ihrer Person in Verbindung zu bringen, sie dienen einzig als Mittel, um auszuwerten, wie die Antworten sich für bestimmte Personengruppen unterscheiden. Während der Durchführung des Experiments (etwa 4 Wochen) werden die Daten auf einem Server in der EU und danach auf dem Gerät des Erstellers gespeichert.',
                 consent: 'Ich willige ein, dass die von mir im folgenden Experiment erhobenen Antworten für akademische Zwecke genutzt und anschließend aufgewahrt werden dürfen',
                 basic: 'Angaben zum Probanden',
-                basicIntro: '',
-                experimentIntro: '',
+				age: 'Wie alt sind Sie?', 
+				primary: 'Was ist Ihre Primärsprache?', 
+				profession: 'Was ist Ihr Beruf?', 
+				contact: 'Wie viel Kontakt haben Sie im Alltag mit Fremdsprachen?', 
+				basicIntro: '',
+                experimentIntro: 'Bitte hören Sie sich die folgenden Aufnahmen an',
+                listen: 'Bitte hören Sie sich die folgenden Aufnahmen an',
                 conclusion: 'Abschließend',
                 conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben, Ihre Antworten wurden übermittelt.',
                 concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen x Aufnahmen gehört haben:'
@@ -110,14 +204,19 @@
                 protection: 'The collected data is anonymized and not in any way assignable to you personally, it serves solely as a means to spot how answers vary across different demographics. It is stored on a server in the EU for the time of this experiment (about 4 weeks), and on the researcher\'s personal device afterwards.',
                 consent: 'I give my consent that the answers I give in the following experiment may be used for academic purposes and stored afterwards',
                 basic: 'Participant\'s basic information',
+				age: 'What is your age?', 
+				primary: 'What is your primary language?', 
+				profession: 'What is your profession?', 
+				contact: 'How much contact to you have with foreign langugages on a daily basis?', 
                 basicIntro: '',
-                experimentIntro: 'Please listen to the following recording',
+                experimentIntro: 'On the following slides, you will hear several recordings of short English sentences. Please rate the recordings according to the provided scales. You can replay them as often as you like and will be able to proceed to the next slide as soon as you have given your ratings. ',
+				listen: 'Please listen to the following recording.',
                 conclusion: 'Conclusion',
                 conclusionThanks: 'Thanks for having completed the experiment, your answers have been recorded.',
                 concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding x recordings:'
 
             },
-            language: this.english,
+            language: null,
             $nextArrow: null,
             validators: [
                 function() {
@@ -130,14 +229,48 @@
                     let value = true;
                     let inputs = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('input[type=text]');
 
-                    let matchers = {name: /^[\w\s]+$/, age: /^\d{2}$/, exp: /^test.*$/}
+                    let matchers = {primary: /^[\w\s]+$/, age: /^\d{2}$/, profession: /^[\w\s]+$/, contact: /^\d{2}$/}
                     for(input of inputs){
                         if(!matchers[input.id].test(input.value)){
                             value = false
                         }
                     }
-                    return value;
-                }
+
+                    return true;
+                },
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				},
+				function () {
+					//No validation needed for this explanatory slide
+					return true
+				}
+
             ]
         },
         methods: {
@@ -161,11 +294,13 @@
                 document.querySelectorAll('.vueperslides__arrow--prev')[0].remove();
                 this.$nextArrow.style.display = 'none'
             },
-            updateIndex: function(e){
+            nextSlide: function(e){
                 this.current = e.currentSlide.index;
                 this.$nextArrow.style.display = 'none';
+				this.validate();
             },
             validate: function(){
+				console.log('Validating...');
                 let value = this.validators[this.current]();
                 this.$nextArrow.style.display = value ? '' : 'none';
             }
