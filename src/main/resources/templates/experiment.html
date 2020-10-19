@@ -41,14 +41,14 @@
                         </div>
                         <div class="vueperslide__content">
                             <p>{{ language.basicIntro }}</p>
-                            <label for="age">{{ language.age }}</label>
-                            <input type="text" id="age" />
-                            <label for="primary">{{ language.primary }}</label>
-                            <input type="text" id="primary" />
-                            <label for="profession">{{ language.profession }}</label>
-                            <input type="text" id="profession" />
-                            <label for="contact">{{ language.contact }}</label>
-                            <input type="text" id="contact" />
+                            <label for="age" class="basic-label centered">{{ language.age }}</label>
+                            <input type="text" id="age" class="centered" />
+                            <label for="primary" class="basic-label centered">{{ language.primary }}</label>
+                            <input type="text" id="primary" class="centered"/>
+                            <label for="profession" class="basic-label centered">{{ language.profession }}</label>
+                            <input type="text" id="profession" class="centered"/>
+                            <label for="contact" class="basic-label centered">{{ language.contact }}</label>
+                            <input type="text" id="contact" class="centered"/>
                         </div>
                     </div>
                 </template>
@@ -65,11 +65,11 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide :key="'number-1'">
+            <vueper-slide v-for="i in 12" :key="'number-' + i">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
-                            <h1>#1</h1>
+                            <h1>#{{ i }}</h1>
                         </div>
                         <div class="vueperslide__content">
                             <p class="centered-text">{{ language.listen }}</p>
@@ -78,97 +78,22 @@
                                     <source src="../static/audio/bell.wav" type="audio/mpeg">
                                 </audio>
                             </div>
-                            <p class="centered-text">{{ language.proficiency }}</p>
+                            <p class="centered-text question">{{ language.proficiency }}</p>
                             <likert :left="language.beginner" :right="language.native" attribute="proficiency"></likert>
-                            <p class="centered-text">{{ language.sound }}</p>
+                            <p class="centered-text question">{{ language.sound }}</p>
                             <div class="evaluations">
                                 <div class="left-column column">
-                                    <likert left="Bad" right="Good" attribute="Quality"></likert>
-                                    <likert left="Little" right="Much" attribute="Quantity"></likert>
-                                    <likert left="Low" right="High" attribute="Height"></likert>
+                                    <likert left="Bad" right="Good" :attribute="'quality-' + i"></likert>
+                                    <likert left="Little" right="Much" :attribute="'quantity-' + i"></likert>
+                                    <likert left="Low" right="High" :attribute="'height-' + i"></likert>
                                 </div>
                                 <div class="right-column column">
-                                    <likert left="Bad" right="Good" attribute="Quality"></likert>
-                                    <likert left="Little" right="Much" attribute="Quantity"></likert>
-                                    <likert left="Low" right="High" attribute="Height"></likert>
+                                    <likert left="Uneducated" right="Educated" :attribute="'education-' + i"></likert>
+                                    <likert left="Harsh" right="Soft" :attribute="'sound-' + i"></likert>
+                                    <likert left="Clumsy" right="Eloquent" :attribute="'eloquence-' + i"></likert>
                                 </div>
                             </div>
                         </div>
-                </template>
-            </vueper-slide>
-            <vueper-slide :key="'number-2'">
-                <template v-slot:content>
-                    <div class="vueperslide__content-wrapper">
-                        <div class="vueperslide__title">
-                            <h1>#2</h1>
-                        </div>
-                        <div class="vueperslide__content">
-                            <p>{{ language.listen }}</p>
-                            <audio controls>
-                                <source src="../static/audio/bell.wav" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </div>
-                </template>
-            </vueper-slide>
-            <vueper-slide :key="'number-3'">
-                <template v-slot:content>
-                    <div class="vueperslide__content-wrapper">
-                        <div class="vueperslide__title">
-                            <h1>#3</h1>
-                        </div>
-                        <div class="vueperslide__content">
-                            <p>{{ language.listen }}</p>
-                            <audio controls>
-                                <source src="../static/audio/bell.wav" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </div>
-                </template>
-            </vueper-slide>
-            <vueper-slide :key="'number-4'">
-                <template v-slot:content>
-                    <div class="vueperslide__content-wrapper">
-                        <div class="vueperslide__title">
-                            <h1>#4</h1>
-                        </div>
-                        <div class="vueperslide__content">
-                            <p>{{ language.listen }}</p>
-                            <audio controls>
-                                <source src="../static/audio/bell.wav" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </div>
-                </template>
-            </vueper-slide>
-            <vueper-slide :key="'number-5'">
-                <template v-slot:content>
-                    <div class="vueperslide__content-wrapper">
-                        <div class="vueperslide__title">
-                            <h1>#5</h1>
-                        </div>
-                        <div class="vueperslide__content">
-                            <p>{{ language.listen }}</p>
-                            <audio controls>
-                                <source src="../static/audio/bell.wav" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </div>
-                </template>
-            </vueper-slide>
-            <vueper-slide :key="'number-6'">
-                <template v-slot:content>
-                    <div class="vueperslide__content-wrapper">
-                        <div class="vueperslide__title">
-                            <h1>#6</h1>
-                        </div>
-                        <div class="vueperslide__content">
-                            <p>{{ language.listen }}</p>
-                            <audio controls>
-                                <source src="../static/audio/bell.wav" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </div>
                 </template>
             </vueper-slide>
             <vueper-slide :key="'conclusion'">
@@ -190,13 +115,11 @@
 <script>
     Vue.component('likert', {
         data: function () {
-            return {
-
-            }
+            return {}
         },
         props: ['left', 'right', 'attribute'],
         template: `<div class="likert">
-                    <span>{{ left }}</span>
+                    <span class="left-pole pole">{{ left }}</span>
                     <input type="radio" :name="attribute" class="choice" />
                     <input type="radio" :name="attribute" class="choice" />
                     <input type="radio" :name="attribute" class="choice" />
@@ -204,7 +127,7 @@
                     <input type="radio" :name="attribute" class="choice" />
                     <input type="radio" :name="attribute" class="choice" />
                     <input type="radio" :name="attribute" class="choice" />
-                    <span>{{ right }}</span>
+                    <span class="right-pole pole">{{ right }}</span>
                 </div>`
 
     })
@@ -227,8 +150,8 @@
                 profession: 'Was ist Ihr Beruf?',
                 contact: 'Wie viel Kontakt haben Sie im Alltag mit Fremdsprachen?',
                 basicIntro: '',
-                experimentIntro: 'Bitte hören Sie sich die folgenden Aufnahmen an',
-                listen: 'Bitte hören Sie sich die folgenden Aufnahmen an',
+                experimentIntro: 'Auf den folgenden Seiten werden Sie Aufnahmen kurzer englischer Sätze hören. Bitte bewerten Sie diese Aufnahmen mithilfe der zur Verfügung gestellten Skalen. Sie können sie so oft sie wollen abspielen und zur nächsten Seite fortfahren, sobald Sie ihre Bewertung abgegeben haben.',
+                listen: 'Bitte hören Sie sich die folgende Aufnahme an',
                 proficiency: 'Wie schätzen Sie das Sprachniveau des Sprechers ein?',
                 beginner: 'Anfänger',
                 native: 'Muttersprachler',
@@ -251,7 +174,7 @@
                 contact: 'How much contact to you have with foreign langugages on a daily basis?',
                 basicIntro: '',
                 experimentIntro: 'On the following slides, you will hear several recordings of short English sentences. Please rate the recordings according to the provided scales. You can replay them as often as you like and will be able to proceed to the next slide as soon as you have given your ratings. ',
-                listen: 'Please listen to the following recording.',
+                listen: 'Please listen to the following recording',
                 proficiency: 'How would you rate the proficiency of this speaker?',
                 beginner: 'Beginner',
                 native: 'Native',
@@ -280,8 +203,27 @@
                             value = false
                         }
                     }
-
-                    return true;
+                    return value;
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
                 },
                 function () {
                     //No validation needed for this explanatory slide
@@ -315,7 +257,6 @@
                     //No validation needed for this explanatory slide
                     return true
                 }
-
             ]
         },
         methods: {
@@ -342,7 +283,8 @@
             nextSlide: function (e) {
                 this.current = e.currentSlide.index;
                 this.$nextArrow.style.display = 'none';
-                this.validate();
+                this.$nextArrow.style.display = 'none'
+                setTimeout(() => { this.validate() } , 1500)
             },
             validate: function () {
                 console.log('Validating...');
