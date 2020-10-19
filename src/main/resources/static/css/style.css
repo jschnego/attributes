@@ -28,14 +28,45 @@ h5 {
 }
 
 p {
-    margin-left: 5%;
-    width: 80%;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 input[type=text] {
     margin-bottom: 10%;
     margin-top: 12px;
     display: block;
+}
+
+.choice {
+    margin-right: 8px;
+}
+
+.vueperslide__content {
+    width: 80%;
+}
+
+.likert {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.audio-container {
+    display: flex;
+    justify-content: center;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.evaluations {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    width: 40%;
 }
 
 .hidden {

@@ -16,9 +16,9 @@
     <div id="app" class="centered">
         <button id="german" class="flag" @click="toGerman"></button>
         <button id="english" class="flag" @click="toEnglish"></button>
-        <vueper-slides class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
+        <vueper-slides ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
             :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide" @input.native="validate">
-            <vueper-slide :key="'intro'" >
+            <vueper-slide :key="'intro'">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -28,7 +28,7 @@
                             <p>{{ language.introThanks }}</p>
                             <p>{{ language.following }}</p>
                             <p>{{ language.protection }}</p>
-                            <p id="consent"><input type="checkbox"/> {{ language.consent }}</p>
+                            <p id="consent"><input type="checkbox" /> {{ language.consent }}</p>
                         </div>
                     </div>
                 </template>
@@ -41,20 +41,20 @@
                         </div>
                         <div class="vueperslide__content">
                             <p>{{ language.basicIntro }}</p>
-			    <label for="age">{{ language.age }}</label>
+                            <label for="age">{{ language.age }}</label>
                             <input type="text" id="age" />
-			    <label for="primary">{{ language.primary }}</label>
+                            <label for="primary">{{ language.primary }}</label>
                             <input type="text" id="primary" />
-			    <label for="profession">{{ language.profession }}</label>
+                            <label for="profession">{{ language.profession }}</label>
                             <input type="text" id="profession" />
-			    <label for="contact">{{ language.contact }}</label>
+                            <label for="contact">{{ language.contact }}</label>
                             <input type="text" id="contact" />
                         </div>
                     </div>
                 </template>
             </vueper-slide>
             <vueper-slide :key="'exp-intro'">
-					<template v-slot:content>
+                <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
                             <h1>Experiment</h1>
@@ -72,12 +72,28 @@
                             <h1>#1</h1>
                         </div>
                         <div class="vueperslide__content">
-                            <p>{{ language.listen }}</p>
-                            <audio controls>
-                                <source src="../static/audio/bell.wav" type="audio/mpeg">
-                            </audio>
+                            <p class="centered-text">{{ language.listen }}</p>
+                            <div class="audio-container">
+                                <audio controls>
+                                    <source src="../static/audio/bell.wav" type="audio/mpeg">
+                                </audio>
+                            </div>
+                            <p class="centered-text">{{ language.proficiency }}</p>
+                            <likert :left="language.beginner" :right="language.native" attribute="proficiency"></likert>
+                            <p class="centered-text">{{ language.sound }}</p>
+                            <div class="evaluations">
+                                <div class="left-column column">
+                                    <likert left="Bad" right="Good" attribute="Quality"></likert>
+                                    <likert left="Little" right="Much" attribute="Quantity"></likert>
+                                    <likert left="Low" right="High" attribute="Height"></likert>
+                                </div>
+                                <div class="right-column column">
+                                    <likert left="Bad" right="Good" attribute="Quality"></likert>
+                                    <likert left="Little" right="Much" attribute="Quantity"></likert>
+                                    <likert left="Low" right="High" attribute="Height"></likert>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </template>
             </vueper-slide>
             <vueper-slide :key="'number-2'">
@@ -172,7 +188,28 @@
     </div>
 </body>
 <script>
-    var app5 = new Vue({
+    Vue.component('likert', {
+        data: function () {
+            return {
+
+            }
+        },
+        props: ['left', 'right', 'attribute'],
+        template: `<div class="likert">
+                    <span>{{ left }}</span>
+                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" class="choice" />
+                    <span>{{ right }}</span>
+                </div>`
+
+    })
+    var research = new Vue({
+
         el: '#app',
         canProceed: false,
         data: {
@@ -185,13 +222,17 @@
                 protection: 'The gesammelten Daten sind anonym und in keiner Weise mit Ihrer Person in Verbindung zu bringen, sie dienen einzig als Mittel, um auszuwerten, wie die Antworten sich für bestimmte Personengruppen unterscheiden. Während der Durchführung des Experiments (etwa 4 Wochen) werden die Daten auf einem Server in der EU und danach auf dem Gerät des Erstellers gespeichert.',
                 consent: 'Ich willige ein, dass die von mir im folgenden Experiment erhobenen Antworten für akademische Zwecke genutzt und anschließend aufgewahrt werden dürfen',
                 basic: 'Angaben zum Probanden',
-				age: 'Wie alt sind Sie?', 
-				primary: 'Was ist Ihre Primärsprache?', 
-				profession: 'Was ist Ihr Beruf?', 
-				contact: 'Wie viel Kontakt haben Sie im Alltag mit Fremdsprachen?', 
-				basicIntro: '',
+                age: 'Wie alt sind Sie?',
+                primary: 'Was ist Ihre Primärsprache?',
+                profession: 'Was ist Ihr Beruf?',
+                contact: 'Wie viel Kontakt haben Sie im Alltag mit Fremdsprachen?',
+                basicIntro: '',
                 experimentIntro: 'Bitte hören Sie sich die folgenden Aufnahmen an',
                 listen: 'Bitte hören Sie sich die folgenden Aufnahmen an',
+                proficiency: 'Wie schätzen Sie das Sprachniveau des Sprechers ein?',
+                beginner: 'Anfänger',
+                native: 'Muttersprachler',
+                sound: 'Wie klingt der Sprecher für Sie?',
                 conclusion: 'Abschließend',
                 conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben, Ihre Antworten wurden übermittelt.',
                 concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen x Aufnahmen gehört haben:'
@@ -204,13 +245,17 @@
                 protection: 'The collected data is anonymized and not in any way assignable to you personally, it serves solely as a means to spot how answers vary across different demographics. It is stored on a server in the EU for the time of this experiment (about 4 weeks), and on the researcher\'s personal device afterwards.',
                 consent: 'I give my consent that the answers I give in the following experiment may be used for academic purposes and stored afterwards',
                 basic: 'Participant\'s basic information',
-				age: 'What is your age?', 
-				primary: 'What is your primary language?', 
-				profession: 'What is your profession?', 
-				contact: 'How much contact to you have with foreign langugages on a daily basis?', 
+                age: 'What is your age?',
+                primary: 'What is your primary language?',
+                profession: 'What is your profession?',
+                contact: 'How much contact to you have with foreign langugages on a daily basis?',
                 basicIntro: '',
                 experimentIntro: 'On the following slides, you will hear several recordings of short English sentences. Please rate the recordings according to the provided scales. You can replay them as often as you like and will be able to proceed to the next slide as soon as you have given your ratings. ',
-				listen: 'Please listen to the following recording.',
+                listen: 'Please listen to the following recording.',
+                proficiency: 'How would you rate the proficiency of this speaker?',
+                beginner: 'Beginner',
+                native: 'Native',
+                sound: 'How does the speaker sound to you?',
                 conclusion: 'Conclusion',
                 conclusionThanks: 'Thanks for having completed the experiment, your answers have been recorded.',
                 concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding x recordings:'
@@ -219,7 +264,7 @@
             language: null,
             $nextArrow: null,
             validators: [
-                function() {
+                function () {
                     //User needs to consent to the usage of their data
                     let box = document.querySelectorAll('.vueperslide--active')[0].querySelector('input[type=checkbox]');
                     return box.checked;
@@ -229,47 +274,47 @@
                     let value = true;
                     let inputs = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('input[type=text]');
 
-                    let matchers = {primary: /^[\w\s]+$/, age: /^\d{2}$/, profession: /^[\w\s]+$/, contact: /^\d{2}$/}
-                    for(input of inputs){
-                        if(!matchers[input.id].test(input.value)){
+                    let matchers = { primary: /^[\w\s]+$/, age: /^\d{2}$/, profession: /^[\w\s]+$/, contact: /^\d{2}$/ }
+                    for (input of inputs) {
+                        if (!matchers[input.id].test(input.value)) {
                             value = false
                         }
                     }
 
                     return true;
                 },
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				},
-				function () {
-					//No validation needed for this explanatory slide
-					return true
-				}
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                }
 
             ]
         },
@@ -294,22 +339,23 @@
                 document.querySelectorAll('.vueperslides__arrow--prev')[0].remove();
                 this.$nextArrow.style.display = 'none'
             },
-            nextSlide: function(e){
+            nextSlide: function (e) {
                 this.current = e.currentSlide.index;
                 this.$nextArrow.style.display = 'none';
-				this.validate();
+                this.validate();
             },
-            validate: function(){
-				console.log('Validating...');
+            validate: function () {
+                console.log('Validating...');
                 let value = this.validators[this.current]();
                 this.$nextArrow.style.display = value ? '' : 'none';
             }
         },
         created: function () {
             this.language = this.english;
+
         }
     });
-</script>
 
+</script>
 
 </html>
