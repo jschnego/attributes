@@ -40,15 +40,7 @@
                             <h1>{{ language.basic }}</h1>
                         </div>
                         <div class="vueperslide__content">
-                            <p>{{ language.basicIntro }}</p>
-                            <label for="age" class="basic-label centered">{{ language.age }}</label>
-                            <input type="text" id="age" class="centered" />
-                            <label for="primary" class="basic-label centered">{{ language.primary }}</label>
-                            <input type="text" id="primary" class="centered"/>
-                            <label for="profession" class="basic-label centered">{{ language.profession }}</label>
-                            <input type="text" id="profession" class="centered"/>
-                            <label for="contact" class="basic-label centered">{{ language.contact }}</label>
-                            <input type="text" id="contact" class="centered"/>
+                            <personal-form :language="language"></personal-form>
                         </div>
                     </div>
                 </template>
@@ -127,6 +119,31 @@
     </div>
 </body>
 <script>
+    Vue.component('personal-form', {
+        data: function() {
+            return {
+                age: null,
+                primary: null,
+                profession: null,
+                contact: null,
+            }
+        },
+        props: ['language'],
+        template: `
+                <div>
+                    <p>{{ language.basicIntro }}</p>
+                    <label for="age" class="basic-label centered">{{ language.age }}</label>
+                    <input type="text" id="age" class="centered" v-model="age"/>
+                    <label for="primary" class="basic-label centered">{{ language.primary }}</label>
+                    <input type="text" id="primary" class="centered" v-model="primary"/>
+                    <label for="profession" class="basic-label centered">{{ language.profession }}</label>
+                    <input type="text" id="profession" class="centered" v-model="profession"/>
+                    <label for="contact" class="basic-label centered">{{ language.contact }}</label>
+                    <input type="text" id="contact" class="centered" v-model="contact"/>
+                </div>
+        `
+    });
+
     Vue.component('likert', {
         data: function () {
             return {
@@ -145,8 +162,8 @@
                     <input type="radio" :name="attribute" value="7" class="choice" v-model="selected"/>
                     <span class="right-pole pole">{{ right }}</span>
                 </div>`
+    });
 
-    })
     var research = new Vue({
 
         el: '#app',
