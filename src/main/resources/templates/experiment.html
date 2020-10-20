@@ -16,7 +16,7 @@
     <div id="app" class="centered">
         <button id="german" class="flag" @click="toGerman"></button>
         <button id="english" class="flag" @click="toEnglish"></button>
-        <vueper-slides ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
+        <vueper-slides init-slide="1" ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
             :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide" @input.native="validate">
             <vueper-slide :key="'intro'">
                 <template v-slot:content>
@@ -75,7 +75,7 @@
                             <p class="centered-text">{{ language.listen }}</p>
                             <div class="audio-container">
                                 <audio controls>
-                                    <source src="../static/audio/bell.wav" type="audio/mpeg">
+                                    <source :src="`../static/audio/recording_${i}.mp3`" type="audio/mpeg">
                                 </audio>
                             </div>
                             <p class="centered-text question">{{ language.proficiency }}</p>
@@ -106,6 +106,20 @@
                             <p>{{ language.conclusionThanks }} </p>
                             <p>{{ language.concludingQuestion }}</p>
                         </div>
+                        <input type="text" id="estimate" v-model="estimated"/>
+                        <input type="button" :value="language.submit" id="submit" @click="submit" :disabled="!hasEstimated()" />
+                    </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide :key="'disclosure'">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>{{ language.disclosure }}</h1>
+                        </div>
+                        <div class="vueperslide__content">
+                            <p>{{ language.conclusionThanks }} </p>
+                        </div>
                     </div>
                 </template>
             </vueper-slide>
@@ -115,18 +129,20 @@
 <script>
     Vue.component('likert', {
         data: function () {
-            return {}
+            return {
+                selected: null
+            }
         },
         props: ['left', 'right', 'attribute'],
         template: `<div class="likert">
                     <span class="left-pole pole">{{ left }}</span>
-                    <input type="radio" :name="attribute" class="choice" />
-                    <input type="radio" :name="attribute" class="choice" />
-                    <input type="radio" :name="attribute" class="choice" />
-                    <input type="radio" :name="attribute" class="choice" />
-                    <input type="radio" :name="attribute" class="choice" />
-                    <input type="radio" :name="attribute" class="choice" />
-                    <input type="radio" :name="attribute" class="choice" />
+                    <input type="radio" :name="attribute" value="1" class="choice" v-model="selected"/>
+                    <input type="radio" :name="attribute" value="2" class="choice" v-model="selected"/>
+                    <input type="radio" :name="attribute" value="3" class="choice" v-model="selected"/>
+                    <input type="radio" :name="attribute" value="4" class="choice" v-model="selected"/>
+                    <input type="radio" :name="attribute" value="5" class="choice" v-model="selected"/>
+                    <input type="radio" :name="attribute" value="6" class="choice" v-model="selected"/>
+                    <input type="radio" :name="attribute" value="7" class="choice" v-model="selected"/>
                     <span class="right-pole pole">{{ right }}</span>
                 </div>`
 
@@ -134,10 +150,10 @@
     var research = new Vue({
 
         el: '#app',
-        canProceed: false,
         data: {
             message: 'Hello Vue.js!',
-            current: 0,
+            current: 1,
+            estimated: '',
             german: {
                 intro: 'Einführung',
                 introThanks: 'Vielen Dank, dass Sie sich die Zeit nehmen, an diesem Experiment teilzunehmen. Die Durchführung dauert etwa 15 Minuten.',
@@ -158,7 +174,9 @@
                 sound: 'Wie klingt der Sprecher für Sie?',
                 conclusion: 'Abschließend',
                 conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben, Ihre Antworten wurden übermittelt.',
-                concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen x Aufnahmen gehört haben:'
+                concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen x Aufnahmen gehört haben:',
+                submit: 'Abschicken',
+                disclosure: 'Aufklärung'
             },
 
             english: {
@@ -181,8 +199,9 @@
                 sound: 'How does the speaker sound to you?',
                 conclusion: 'Conclusion',
                 conclusionThanks: 'Thanks for having completed the experiment, your answers have been recorded.',
-                concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding x recordings:'
-
+                concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding x recordings:',
+                submit: 'Submit',
+                disclosure: 'Disclosure'
             },
             language: null,
             $nextArrow: null,
@@ -256,6 +275,14 @@
                 function () {
                     //No validation needed for this explanatory slide
                     return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return true
+                },
+                function () {
+                    //No validation needed for this explanatory slide
+                    return false
                 }
             ]
         },
@@ -290,6 +317,12 @@
                 console.log('Validating...');
                 let value = this.validators[this.current]();
                 this.$nextArrow.style.display = value ? '' : 'none';
+            },
+            hasEstimated: function () {
+                return /^\d{1,2}$/.test(this.estimated);
+            },
+            submit: function () {
+                this.$refs.slides.next();
             }
         },
         created: function () {
@@ -301,3 +334,16 @@
 </script>
 
 </html>
+
+<!--
+TODOS
+---
+
+/  Input für abschließende Frage
+   Alle Angaben auf Deutsch/Englisch
+/  Verschiedene Quellen für die audio-Elemente
+   Erklärungen vervollständigen
+   Validierung der Bewertungen
+   Datenstruktur zum Senden der Daten 
+
+ -->
