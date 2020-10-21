@@ -19,7 +19,7 @@
         <vueper-slides init-slide="1" ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true"
             :touchable="false" :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide"
             @input.native="validate">
-            <vueper-slide :key="'intro'">
+            <vueper-slide :key="'intro'" title="intro">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -34,7 +34,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide :key="'basic'">
+            <vueper-slide :key="'basic'" title="personal">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -46,7 +46,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide :key="'exp-intro'">
+            <vueper-slide :key="'exp-intro'" title="expIntro">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -58,7 +58,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide v-for="i in 12" :key="'number-' + i">
+            <vueper-slide v-for="i in 12" :key="'recording-' + i" title="recording">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -96,7 +96,7 @@
                         </div>
                 </template>
             </vueper-slide>
-            <vueper-slide :key="'conclusion'">
+            <vueper-slide :key="'conclusion'" title="conclusion">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -112,7 +112,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide :key="'disclosure'">
+            <vueper-slide :key="'disclosure'" title="disclosure">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -208,7 +208,7 @@
         el: '#app',
         data: {
             message: {},
-            current: 1,
+            current: 'intro',
             estimated: '',
             german: {
                 intro: 'Einführung',
@@ -261,13 +261,13 @@
             },
             language: null,
             $nextArrow: null,
-            validators: [
-                function () {
+            validators: {
+                intro: function () {
                     //User needs to consent to the usage of their data
                     let box = document.querySelectorAll('.vueperslide--active')[0].querySelector('input[type=checkbox]');
                     return box.checked;
                 },
-                function () {
+                personal: function () {
                     //All fields need to be filled or ticked for the form to be valid
                     let value = true;
                     let inputs = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('input[type=text]');
@@ -280,67 +280,41 @@
                     }
                     return value;
                 },
-                function () {
+                expIntro: function () {
                     //No validation needed for this explanatory slide
                     return true
                 },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
+                recording: function () {
+                    let value = true
+                    let scales = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('.likert');
+                    
+                    //Iterate over all scales
+                    for(scale of scales){
+                        let buttons = scale.querySelectorAll('.choice');
+                        let checked = false;
+
+                        //If a single button is checked, this scale is checked 
+                        for(button of buttons){
+                            if(button.checked){
+                                checked = true
+                            }
+                        }
+                        //If a single scale is unchecked, validation fails
+                        if(!checked){
+                            value = false;
+                        }
+                    }
+                    return value;
                 },
-                function () {
+                submit: function () {
                     //No validation needed for this explanatory slide
-                    return true
+                    return false;
                 },
-                function () {
+                disclosure: function () {
                     //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return true
-                },
-                function () {
-                    //No validation needed for this explanatory slide
-                    return false
+                    return true;
                 }
-            ]
+            }
         },
         methods: {
             postMessage: function () {
@@ -364,15 +338,13 @@
                 this.$nextArrow.style.display = 'none'
             },
             nextSlide: function (e) {
-                this.current = e.currentSlide.index;
+                this.current = e.currentSlide.title;
+
                 this.$nextArrow.style.display = 'none';
-                this.$nextArrow.style.display = 'none'
                 setTimeout(() => { this.validate() }, 1500)
             },
             validate: function () {
-                console.log('Validating...');
-                let value = this.validators[this.current]();
-                this.$nextArrow.style.display = value ? '' : 'none';
+                this.$nextArrow.style.display = this.validators[this.current]() ? '' : 'none';                    
             },
             hasEstimated: function () {
                 return /^\d{1,2}$/.test(this.estimated);
@@ -395,7 +367,6 @@
                     }
                     this.message[`recording-${parts[1]}`][parts[0]] = evaluation[key];
                 }
-                console.log(this.message);
             },
             updateEstimation: function(e) {
                 let estimation = JSON.parse(e);
@@ -404,7 +375,6 @@
                     this.estimated = estimation[key];
                     this.message[key] = estimation[key];
                 }
-                console.log(this.message);
             }
         },
         created: function () {
@@ -425,6 +395,6 @@ TODOS
 /  Verschiedene Quellen für die audio-Elemente
    Erklärungen vervollständigen
    Validierung der Bewertungen
-   Datenstruktur zum Senden der Daten 
+/  Datenstruktur zum Senden der Daten 
 
  -->
