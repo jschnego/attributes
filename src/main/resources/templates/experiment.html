@@ -16,8 +16,9 @@
     <div id="app" class="centered">
         <button id="german" class="flag" @click="toGerman"></button>
         <button id="english" class="flag" @click="toEnglish"></button>
-        <vueper-slides init-slide="1" ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
-            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide" @input.native="validate">
+        <vueper-slides init-slide="1" ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true"
+            :touchable="false" :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide"
+            @input.native="validate">
             <vueper-slide :key="'intro'">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
@@ -40,7 +41,7 @@
                             <h1>{{ language.basic }}</h1>
                         </div>
                         <div class="vueperslide__content">
-                            <personal-form :language="language"></personal-form>
+                            <personal-form :language="language" @update="updatePersonal"></personal-form>
                         </div>
                     </div>
                 </template>
@@ -71,18 +72,25 @@
                                 </audio>
                             </div>
                             <p class="centered-text question">{{ language.proficiency }}</p>
-                            <likert :left="language.beginner" :right="language.native" attribute="proficiency"></likert>
+                            <likert :left="language.beginner" :right="language.native" :attribute="'proficiency-' + i"
+                                @new-eval="updateEvals"></likert>
                             <p class="centered-text question">{{ language.sound }}</p>
                             <div class="evaluations">
                                 <div class="left-column column">
-                                    <likert left="Bad" right="Good" :attribute="'quality-' + i"></likert>
-                                    <likert left="Little" right="Much" :attribute="'quantity-' + i"></likert>
-                                    <likert left="Low" right="High" :attribute="'height-' + i"></likert>
+                                    <likert left="bad" right="good" :attribute="'quality-' + i" @new-eval="updateEvals">
+                                    </likert>
+                                    <likert left="Little" right="Much" :attribute="'quantity-' + i"
+                                        @new-eval="updateEvals"></likert>
+                                    <likert left="Low" right="High" :attribute="'height-' + i" @new-eval="updateEvals">
+                                    </likert>
                                 </div>
                                 <div class="right-column column">
-                                    <likert left="Uneducated" right="Educated" :attribute="'education-' + i"></likert>
-                                    <likert left="Harsh" right="Soft" :attribute="'sound-' + i"></likert>
-                                    <likert left="Clumsy" right="Eloquent" :attribute="'eloquence-' + i"></likert>
+                                    <likert left="Uneducated" right="Educated" :attribute="'education-' + i"
+                                        @new-eval="updateEvals"></likert>
+                                    <likert left="Harsh" right="Soft" :attribute="'sound-' + i" @new-eval="updateEvals">
+                                    </likert>
+                                    <likert left="Clumsy" right="Eloquent" :attribute="'eloquence-' + i"
+                                        @new-eval="updateEvals"></likert>
                                 </div>
                             </div>
                         </div>
@@ -98,8 +106,9 @@
                             <p>{{ language.conclusionThanks }} </p>
                             <p>{{ language.concludingQuestion }}</p>
                         </div>
-                        <input type="text" id="estimate" v-model="estimated"/>
-                        <input type="button" :value="language.submit" id="submit" @click="submit" :disabled="!hasEstimated()" />
+                        <estimation @estimation="updateEstimation"></estimation>
+                        <input type="button" :value="language.submit" id="submit" @click="submit"
+                            :disabled="!hasEstimated()" />
                     </div>
                 </template>
             </vueper-slide>
@@ -119,27 +128,51 @@
     </div>
 </body>
 <script>
-    Vue.component('personal-form', {
-        data: function() {
+    Vue.component('estimation', {
+        data: function () {
             return {
-                age: null,
-                primary: null,
-                profession: null,
-                contact: null,
+                estimation: null
+            }
+        },
+        watch: {
+            estimation: function (n, o) {
+                let est = {}
+                est['estimation'] = n;
+                this.$emit('estimation', JSON.stringify(est));
+            }
+        },
+        template: `<input type = "text" id="estimate" v-model="estimation"></input>`
+    })
+
+    Vue.component('personal-form', {
+        data: function () {
+            return {
+                personal: {
+                    age: null,
+                    primary: null,
+                    profession: null,
+                    contact: null,
+                }
             }
         },
         props: ['language'],
+        methods: {
+            updateData: function () {
+                this.$emit('update', JSON.stringify(this.personal));
+            }
+        },
         template: `
-                <div>
+                <div @input="updateData">
+                    <span>{{personal}}</span>
                     <p>{{ language.basicIntro }}</p>
                     <label for="age" class="basic-label centered">{{ language.age }}</label>
-                    <input type="text" id="age" class="centered" v-model="age"/>
+                    <input type="text" id="age" class="centered" v-model="personal.age"/>
                     <label for="primary" class="basic-label centered">{{ language.primary }}</label>
-                    <input type="text" id="primary" class="centered" v-model="primary"/>
+                    <input type="text" id="primary" class="centered" v-model="personal.primary"/>
                     <label for="profession" class="basic-label centered">{{ language.profession }}</label>
-                    <input type="text" id="profession" class="centered" v-model="profession"/>
+                    <input type="text" id="profession" class="centered" v-model="personal.profession"/>
                     <label for="contact" class="basic-label centered">{{ language.contact }}</label>
-                    <input type="text" id="contact" class="centered" v-model="contact"/>
+                    <input type="text" id="contact" class="centered" v-model="personal.contact"/>
                 </div>
         `
     });
@@ -151,6 +184,13 @@
             }
         },
         props: ['left', 'right', 'attribute'],
+        watch: {
+            selected: function (n, o) {
+                let eval = {}
+                eval[this.attribute] = n;
+                this.$emit('new-eval', JSON.stringify(eval));
+            }
+        },
         template: `<div class="likert">
                     <span class="left-pole pole">{{ left }}</span>
                     <input type="radio" :name="attribute" value="1" class="choice" v-model="selected"/>
@@ -165,10 +205,9 @@
     });
 
     var research = new Vue({
-
         el: '#app',
         data: {
-            message: 'Hello Vue.js!',
+            message: {},
             current: 1,
             estimated: '',
             german: {
@@ -328,7 +367,7 @@
                 this.current = e.currentSlide.index;
                 this.$nextArrow.style.display = 'none';
                 this.$nextArrow.style.display = 'none'
-                setTimeout(() => { this.validate() } , 1500)
+                setTimeout(() => { this.validate() }, 1500)
             },
             validate: function () {
                 console.log('Validating...');
@@ -340,11 +379,36 @@
             },
             submit: function () {
                 this.$refs.slides.next();
+                console.log(this.message);
+            },
+            updatePersonal: function (e) {
+                this.message['personal'] = JSON.parse(e);
+            },
+            updateEvals: function (e) {
+                let evaluation = JSON.parse(e);
+
+                for (key in evaluation) {
+                    let parts = key.split('-');
+                    console.log(parts)
+                    if (!this.message[`recording-${parts[1]}`]) {
+                        this.message[`recording-${parts[1]}`] = {};
+                    }
+                    this.message[`recording-${parts[1]}`][parts[0]] = evaluation[key];
+                }
+                console.log(this.message);
+            },
+            updateEstimation: function(e) {
+                let estimation = JSON.parse(e);
+
+                for (key in estimation){
+                    this.estimated = estimation[key];
+                    this.message[key] = estimation[key];
+                }
+                console.log(this.message);
             }
         },
         created: function () {
             this.language = this.english;
-
         }
     });
 
