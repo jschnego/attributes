@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello Vue Research</title>
+    <title>Experiment</title>
     <script src="../static/lib/vue.js"></script>
     <script src="../static/lib/vueperslides.js"></script>
     <link href="../static/css/vueperslides.css" rel="stylesheet">
@@ -16,9 +16,8 @@
     <div id="app" class="centered">
         <button id="german" class="flag" @click="toGerman"></button>
         <button id="english" class="flag" @click="toEnglish"></button>
-        <vueper-slides init-slide="1" ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true"
-            :touchable="false" :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide"
-            @input.native="validate">
+        <vueper-slides ref="slides" class="no-shadow" fractions :disable-arrows-on-edges="true" :touchable="false"
+            :fixed-height="'100%'" :bullets="false" @ready="wrapArrow" @slide="nextSlide" @input.native="validate">
             <vueper-slide :key="'intro'" title="intro">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
@@ -77,23 +76,49 @@
                             <p class="centered-text question">{{ language.sound }}</p>
                             <div class="evaluations">
                                 <div class="left-column column">
-                                    <likert left="bad" right="good" :attribute="'quality-' + i" @new-eval="updateEvals">
+                                    <likert :left="language.uneducated" :right="language.educated" :attribute="'quality-' + i" @new-eval="updateEvals">
                                     </likert>
-                                    <likert left="Little" right="Much" :attribute="'quantity-' + i"
+                                    <likert :left="language.clumsy" :right="language.eloquent" :attribute="'quantity-' + i"
                                         @new-eval="updateEvals"></likert>
-                                    <likert left="Low" right="High" :attribute="'height-' + i" @new-eval="updateEvals">
+                                    <likert :left="language.dubious" :right="language.respectable" :attribute="'height-' + i" @new-eval="updateEvals">
                                     </likert>
                                 </div>
                                 <div class="right-column column">
-                                    <likert left="Uneducated" right="Educated" :attribute="'education-' + i"
+                                    <likert :left="language.harsh" :right="language.soft" :attribute="'education-' + i"
                                         @new-eval="updateEvals"></likert>
-                                    <likert left="Harsh" right="Soft" :attribute="'sound-' + i" @new-eval="updateEvals">
+                                    <likert :left="language.negligent" :right="language.correct" :attribute="'sound-' + i" @new-eval="updateEvals">
                                     </likert>
-                                    <likert left="Clumsy" right="Eloquent" :attribute="'eloquence-' + i"
+                                    <likert :left="language.boring" :right="language.interesting" :attribute="'eloquence-' + i"
                                         @new-eval="updateEvals"></likert>
                                 </div>
                             </div>
                         </div>
+                </template>
+            </vueper-slide>
+            <vueper-slide v-for="i in ['english', 'german']" :key="'general-' + i" title="general">
+                <template v-slot:content>
+                    <div class="vueperslide__content-wrapper">
+                        <div class="vueperslide__title">
+                            <h1>{{ language[i] }}</h1>
+                        </div>
+                        <p class="centered-text">{{ generalSound(i) }}</p>
+                        <div class="evaluations">
+                            <div class="left-column column">
+                                <likert :left="language.uneducated" :right="language.educated" :attribute="'quality-' + i" @new-eval="updateEvals"
+                                    class="general">
+                                </likert>
+                                <likert :left="language.dubious" :right="language.respectable" :attribute="'quantity-' + i" @new-eval="updateEvals"
+                                    class="general"></likert>
+                            </div>
+                            <div class="right-column column">
+                                <likert :left="language.harsh" :right="language.soft" :attribute="'education-' + i"
+                                    @new-eval="updateEvals" class="general"></likert>
+                                <likert :left="language.boring" :right="language.interesting" :attribute="'sound-' + i" @new-eval="updateEvals"
+                                    class="general">
+                                </likert>
+                            </div>
+                        </div>
+                    </div>
                 </template>
             </vueper-slide>
             <vueper-slide :key="'conclusion'" title="conclusion">
@@ -119,7 +144,9 @@
                             <h1>{{ language.disclosure }}</h1>
                         </div>
                         <div class="vueperslide__content">
-                            <p>{{ language.conclusionThanks }} </p>
+                            <p>{{ language.submitted }} </p>
+                            <p>{{ language.explanation }} </p>
+                            <p>{{ language.intention }} </p>
                         </div>
                     </div>
                 </template>
@@ -149,6 +176,7 @@
             return {
                 personal: {
                     age: null,
+                    residence: null,
                     primary: null,
                     profession: null,
                     contact: null,
@@ -162,17 +190,21 @@
             }
         },
         template: `
-                <div @input="updateData">
-                    <span>{{personal}}</span>
-                    <p>{{ language.basicIntro }}</p>
-                    <label for="age" class="basic-label centered">{{ language.age }}</label>
-                    <input type="text" id="age" class="centered" v-model="personal.age"/>
-                    <label for="primary" class="basic-label centered">{{ language.primary }}</label>
-                    <input type="text" id="primary" class="centered" v-model="personal.primary"/>
-                    <label for="profession" class="basic-label centered">{{ language.profession }}</label>
-                    <input type="text" id="profession" class="centered" v-model="personal.profession"/>
-                    <label for="contact" class="basic-label centered">{{ language.contact }}</label>
-                    <input type="text" id="contact" class="centered" v-model="personal.contact"/>
+                <div class="personal" @input="updateData">
+                    <div class="column">
+                        <label for="age" class="basic-label centered">{{ language.age }}</label>
+                        <input type="text" id="age" class="centered" v-model="personal.age"/>
+                        <label for="residence" class="basic-label centered">{{ language.residence }}</label>
+                        <input type="text" id="residence" class="centered" v-model="personal.residence"/>
+                        <label for="primary" class="basic-label centered">{{ language.primary }}</label>
+                        <input type="text" id="primary" class="centered" v-model="personal.primary"/>
+                    </div>
+                    <div class="column">
+                        <label for="profession" class="basic-label centered">{{ language.profession }}</label>
+                        <input type="text" id="profession" class="centered" v-model="personal.profession"/>
+                        <label for="contact" class="basic-label centered">{{ language.contact }}</label>
+                        <input type="text" id="contact" class="centered" v-model="personal.contact"/>
+                    </div>
                 </div>
         `
     });
@@ -212,52 +244,86 @@
             estimated: '',
             german: {
                 intro: 'Einführung',
-                introThanks: 'Vielen Dank, dass Sie sich die Zeit nehmen, an diesem Experiment teilzunehmen. Die Durchführung dauert etwa 15 Minuten.',
+                introThanks: 'Vielen Dank, dass Sie sich die Zeit nehmen, an diesem Experiment teilzunehmen. Die Durchführung dauert etwa 10-15 Minuten.',
                 following: 'Auf der folgenden Seite werden zunächst einige allgemeine Informationen abgefragt. Um am Experiment teilzunehmen, müssen Sie zunächst zustimmen, dass Sie sich damit einverstanden erklären, dass die gemachten Angaben zu Forschungszwecken verwendet und für spätere Referenz gespeichert werden.',
-                protection: 'The gesammelten Daten sind anonym und in keiner Weise mit Ihrer Person in Verbindung zu bringen, sie dienen einzig als Mittel, um auszuwerten, wie die Antworten sich für bestimmte Personengruppen unterscheiden. Während der Durchführung des Experiments (etwa 4 Wochen) werden die Daten auf einem Server in der EU und danach auf dem Gerät des Erstellers gespeichert.',
+                protection: 'Die gesammelten Daten sind anonym und in keiner Weise mit Ihrer Person in Verbindung zu bringen, sie dienen einzig als Mittel, um auszuwerten, wie die Antworten sich für bestimmte Personengruppen unterscheiden. Während der Durchführung des Experiments (etwa 2 Wochen) werden die Daten auf einem Server in der EU und danach auf dem Gerät des Erstellers gespeichert.',
                 consent: 'Ich willige ein, dass die von mir im folgenden Experiment erhobenen Antworten für akademische Zwecke genutzt und anschließend aufgewahrt werden dürfen',
                 basic: 'Angaben zum Probanden',
                 age: 'Wie alt sind Sie?',
+                residence: 'In welchem Land sind Sie aufgewachsen?',
                 primary: 'Was ist Ihre Primärsprache?',
                 profession: 'Was ist Ihr Beruf?',
-                contact: 'Wie viel Kontakt haben Sie im Alltag mit Fremdsprachen?',
-                basicIntro: '',
+                contact: 'Auf einer Skala von 0 (überhaupt nicht) bis 10 (ausschließlich), wie viel Kontakt haben Sie im Alltag mit der englischen Sprache?',
                 experimentIntro: 'Auf den folgenden Seiten werden Sie Aufnahmen kurzer englischer Sätze hören. Bitte bewerten Sie diese Aufnahmen mithilfe der zur Verfügung gestellten Skalen. Sie können sie so oft sie wollen abspielen und zur nächsten Seite fortfahren, sobald Sie ihre Bewertung abgegeben haben.',
                 listen: 'Bitte hören Sie sich die folgende Aufnahme an',
                 proficiency: 'Wie schätzen Sie das Sprachniveau des Sprechers ein?',
                 beginner: 'Anfänger',
                 native: 'Muttersprachler',
                 sound: 'Wie klingt der Sprecher für Sie?',
+                uneducated: 'Ungebildet',
+                educated: 'Gebildet',
+                clumsy: 'Unbeholfen',
+                eloquent: 'Eloquent',
+                dubious: 'Dubios',
+                respectable: 'Respektabel',
+                harsh: 'Schroff',
+                soft: 'Sanft',
+                negligent: 'Nachlässig',
+                correct: 'Korrekt',
+                boring: 'Langweilig',
+                interesting: 'Interessant',
+                english: 'Englisch',
+                german: 'Deutsch',
                 conclusion: 'Abschließend',
-                conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben, Ihre Antworten wurden übermittelt.',
-                concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen x Aufnahmen gehört haben:',
+                conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben.',
+                concludingQuestion: 'Bitte geben Sie an, wie viele Sprecher Sie in den vorausgegangenen 12 Aufnahmen gehört haben:',
                 submit: 'Abschicken',
-                disclosure: 'Aufklärung'
+                disclosure: 'Aufklärung',
+                submitted: 'Ihre Antworten wurden übermittelt.',
+                explanation: 'Das Experiment, welches Sie gerade beendet haben, war ein so genanntes Matched Guise-Experiment, die Stimme in allen Aufnahmen war also die desselben Sprechers. Eine Version jedes aufgenommenen Satzes war unmarkiert/schwach markiert im Hinblick auf einen nicht-muttersprachlichen Akzent, während die anderen unterschiedliche Grade eines deutschen Akzentes aufwiesen.',
+                intention: 'Die Intention ist es, herauszufinden, in welchem Maße die Bewertungen der Aufnahmen mit den zu den jeweiligen Sprachen ausgedrückten Meinungen korrespondieren.'
             },
 
             english: {
                 intro: 'Introduction',
-                introThanks: 'Thanks for taking the time to participate in this experiment. Completing it takes about 15 minutes.',
+                introThanks: 'Thanks for taking the time to participate in this experiment. Completing it takes about 10-15 minutes.',
                 following: 'In the following slides, you will first be asked to provide some basic information. To take the experiment, you will have to consent to your data being used for research purposes and stored for later reference.',
-                protection: 'The collected data is anonymized and not in any way assignable to you personally, it serves solely as a means to spot how answers vary across different demographics. It is stored on a server in the EU for the time of this experiment (about 4 weeks), and on the researcher\'s personal device afterwards.',
+                protection: 'The collected data is anonymized and can in no way be associated with you personally, it serves solely as a means to spot how answers vary across different groups of people. They are stored on a server in the EU for the time of this experiment (about 2 weeks) and on the researcher\'s personal device afterwards.',
                 consent: 'I give my consent that the answers I give in the following experiment may be used for academic purposes and stored afterwards',
                 basic: 'Participant\'s basic information',
                 age: 'What is your age?',
+                residence: 'What country did you grow up in?',
                 primary: 'What is your primary language?',
                 profession: 'What is your profession?',
-                contact: 'How much contact to you have with foreign langugages on a daily basis?',
-                basicIntro: '',
+                contact: 'On a scale from 0 (none) to 10 (exclusively), how much contact do you have with the English language on a daily basis?',
                 experimentIntro: 'On the following slides, you will hear several recordings of short English sentences. Please rate the recordings according to the provided scales. You can replay them as often as you like and will be able to proceed to the next slide as soon as you have given your ratings. ',
                 listen: 'Please listen to the following recording',
                 proficiency: 'How would you rate the proficiency of this speaker?',
                 beginner: 'Beginner',
                 native: 'Native',
                 sound: 'How does the speaker sound to you?',
+                uneducated: 'Uneducated',
+                educated: 'Educated',
+                clumsy: 'Clumsy',
+                eloquent: 'Eloquent',
+                dubious: 'Dubious',
+                respectable: 'respectable',
+                harsh: 'Harsh',
+                soft: 'Soft',
+                negligent: 'Negligent',
+                correct: 'Correct',
+                boring: 'Boring',
+                interesting: 'Interesting',
+                english: 'English',
+                german: 'German',
                 conclusion: 'Conclusion',
-                conclusionThanks: 'Thanks for having completed the experiment, your answers have been recorded.',
-                concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding x recordings:',
+                conclusionThanks: 'Thanks for having completed the experiment!',
+                concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding 12 recordings:',
                 submit: 'Submit',
-                disclosure: 'Disclosure'
+                disclosure: 'Disclosure',
+                submitted: 'Your answers have been submitted.',
+                explanation: 'The experiment you have just completed was a so called Matched Guise experiment, i.e. the voice on all recordings was that of the same speaker. One version of each recorded sentence was unmarked/weakly marked for a non-native accent, while the others exhibited differing degrees of a German accent.',
+                intention: 'The intention is to find out to what degree evaluations of these recordings correspond to attitudes expressed towards the respective languages.'
             },
             language: null,
             $nextArrow: null,
@@ -272,7 +338,7 @@
                     let value = true;
                     let inputs = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('input[type=text]');
 
-                    let matchers = { primary: /^[\w\s]+$/, age: /^\d{2}$/, profession: /^[\w\s]+$/, contact: /^\d{2}$/ }
+                    let matchers = { primary: /^[\w\s]+$/, residence: /^[\w\s]+$/, age: /^\d{2}$/, profession: /^[\w\s]+$/, contact: /^([0-9]|10)$/ }
                     for (input of inputs) {
                         if (!matchers[input.id].test(input.value)) {
                             value = false
@@ -287,20 +353,42 @@
                 recording: function () {
                     let value = true
                     let scales = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('.likert');
-                    
+
                     //Iterate over all scales
-                    for(scale of scales){
+                    for (scale of scales) {
                         let buttons = scale.querySelectorAll('.choice');
                         let checked = false;
 
                         //If a single button is checked, this scale is checked 
-                        for(button of buttons){
-                            if(button.checked){
+                        for (button of buttons) {
+                            if (button.checked) {
                                 checked = true
                             }
                         }
                         //If a single scale is unchecked, validation fails
-                        if(!checked){
+                        if (!checked) {
+                            value = false;
+                        }
+                    }
+                    return value;
+                },
+                general: function () {
+                    let value = true
+                    let scales = document.querySelectorAll('.vueperslide--active')[0].querySelectorAll('.likert');
+
+                    //Iterate over all scales
+                    for (scale of scales) {
+                        let buttons = scale.querySelectorAll('.choice');
+                        let checked = false;
+
+                        //If a single button is checked, this scale is checked 
+                        for (button of buttons) {
+                            if (button.checked) {
+                                checked = true
+                            }
+                        }
+                        //If a single scale is unchecked, validation fails
+                        if (!checked) {
                             value = false;
                         }
                     }
@@ -339,12 +427,11 @@
             },
             nextSlide: function (e) {
                 this.current = e.currentSlide.title;
-
                 this.$nextArrow.style.display = 'none';
                 setTimeout(() => { this.validate() }, 1500)
             },
             validate: function () {
-                this.$nextArrow.style.display = this.validators[this.current]() ? '' : 'none';                    
+                this.$nextArrow.style.display = this.validators[this.current]() ? '' : 'none';
             },
             hasEstimated: function () {
                 return /^\d{1,2}$/.test(this.estimated);
@@ -362,19 +449,24 @@
                 for (key in evaluation) {
                     let parts = key.split('-');
                     console.log(parts)
-                    if (!this.message[`recording-${parts[1]}`]) {
-                        this.message[`recording-${parts[1]}`] = {};
+                    if (!this.message[`${parts[1]}`]) {
+                        this.message[`${parts[1]}`] = {};
                     }
-                    this.message[`recording-${parts[1]}`][parts[0]] = evaluation[key];
+                    this.message[`${parts[1]}`][parts[0]] = evaluation[key];
                 }
             },
-            updateEstimation: function(e) {
+            updateEstimation: function (e) {
                 let estimation = JSON.parse(e);
 
-                for (key in estimation){
+                for (key in estimation) {
                     this.estimated = estimation[key];
                     this.message[key] = estimation[key];
                 }
+            },
+            generalSound: function (lang) {
+                return this.language === this.english ?
+                    `How does a native speaker speaking ${this.language[lang]} sound to you?` :
+                    `Wie klingt ein Muttersprachler, der ${this.language[lang]} spricht für Sie?`;
             }
         },
         created: function () {
@@ -394,7 +486,7 @@ TODOS
    Alle Angaben auf Deutsch/Englisch
 /  Verschiedene Quellen für die audio-Elemente
    Erklärungen vervollständigen
-   Validierung der Bewertungen
+/  Validierung der Bewertungen
 /  Datenstruktur zum Senden der Daten 
 
  -->
