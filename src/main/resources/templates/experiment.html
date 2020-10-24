@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Experiment</title>
-    <script src="lib/vue.js"></script>
-    <script src="lib/vueperslides.js"></script>
-    <link href="css/vueperslides.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <script src="../static/lib/vue.js"></script>
+    <script src="../static/lib/vueperslides.js"></script>
+    <link href="../static/css/vueperslides.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
 <body>
@@ -58,7 +58,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide v-for="i in 2" :key="'recording-' + i" title="recording">
+            <vueper-slide v-for="i in 1" :key="'recording-' + i" title="recording">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -78,28 +78,28 @@
                             <div class="evaluations">
                                 <div class="left-column column">
                                     <likert :left="language.uneducated" :right="language.educated"
-                                        :attribute="'quality-' + i" @new-eval="updateEvals">
+                                        :attribute="'education-' + i" @new-eval="updateEvals">
                                     </likert>
                                     <likert :left="language.clumsy" :right="language.eloquent"
-                                        :attribute="'quantity-' + i" @new-eval="updateEvals"></likert>
+                                        :attribute="'eloquence-' + i" @new-eval="updateEvals"></likert>
                                     <likert :left="language.dubious" :right="language.respectable"
-                                        :attribute="'height-' + i" @new-eval="updateEvals">
+                                        :attribute="'respectability-' + i" @new-eval="updateEvals">
                                     </likert>
                                 </div>
                                 <div class="right-column column">
-                                    <likert :left="language.harsh" :right="language.soft" :attribute="'education-' + i"
+                                    <likert :left="language.harsh" :right="language.soft" :attribute="'sound-' + i"
                                         @new-eval="updateEvals"></likert>
                                     <likert :left="language.negligent" :right="language.correct"
-                                        :attribute="'sound-' + i" @new-eval="updateEvals">
+                                        :attribute="'correctness-' + i" @new-eval="updateEvals">
                                     </likert>
                                     <likert :left="language.boring" :right="language.interesting"
-                                        :attribute="'eloquence-' + i" @new-eval="updateEvals"></likert>
+                                        :attribute="'interest-' + i" @new-eval="updateEvals"></likert>
                                 </div>
                             </div>
                         </div>
                 </template>
             </vueper-slide>
-            <vueper-slide v-for="i in ['english', 'german']" :key="'general-' + i" title="general">
+            <vueper-slide v-for="i in ['english', 'german', 'accent']" :key="'general-' + i" title="general">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -110,16 +110,16 @@
                             <div class="evaluations">
                                 <div class="left-column column">
                                     <likert :left="language.uneducated" :right="language.educated"
-                                        :attribute="'quality-' + i" @new-eval="updateEvals" class="general">
+                                        :attribute="'education-' + i" @new-eval="updateEvals" class="general">
                                     </likert>
                                     <likert :left="language.dubious" :right="language.respectable"
-                                        :attribute="'quantity-' + i" @new-eval="updateEvals" class="general"></likert>
+                                        :attribute="'respectability-' + i" @new-eval="updateEvals" class="general"></likert>
                                 </div>
                                 <div class="right-column column">
-                                    <likert :left="language.harsh" :right="language.soft" :attribute="'education-' + i"
+                                    <likert :left="language.harsh" :right="language.soft" :attribute="'sound-' + i"
                                         @new-eval="updateEvals" class="general"></likert>
                                     <likert :left="language.boring" :right="language.interesting"
-                                        :attribute="'sound-' + i" @new-eval="updateEvals" class="general">
+                                        :attribute="'interest-' + i" @new-eval="updateEvals" class="general">
                                     </likert>
                                 </div>
                             </div>
@@ -281,6 +281,7 @@
                 interesting: 'Interessant',
                 english: 'Englisch',
                 german: 'Deutsch',
+				accent: 'Englisch mit einem deutschen Akzent',
                 conclusion: 'Abschließend',
                 conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben.',
                 concludingQuestion: 'Bitte geben Sie an, wie viele verschiedene Sprecher Sie in den vorausgegangenen 12 Aufnahmen gehört haben:',
@@ -324,6 +325,7 @@
                 interesting: 'Interesting',
                 english: 'English',
                 german: 'German',
+				accent: 'English with a German accent',
                 conclusion: 'Conclusion',
                 conclusionThanks: 'Thanks for having completed the experiment!',
                 concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding 12 recordings:',
@@ -436,6 +438,7 @@
                 return /^\d{1,2}$/.test(this.estimated);
             },
             submit: function () {
+				console.log(this.message);
                 fetch('/api/store', {
                     method: 'POST',
                     headers: {
@@ -469,8 +472,8 @@
             },
             generalSound: function (lang) {
                 return this.language === this.english ?
-                    `How does a native speaker speaking ${this.language[lang]} sound to you?` :
-                    `Wie klingt ein Muttersprachler, der ${this.language[lang]} spricht, für Sie?`;
+						`How does a native ${lang === 'accent' ? 'German ' : '' }speaker speaking ${this.language[lang]} sound to you?` :
+						`Wie klingt ein ${lang === 'accent' ? 'deutscher ' : ''}Muttersprachler, der ${this.language[lang]} spricht, für Sie?`;
             }
         },
         created: function () {
@@ -481,16 +484,3 @@
 </script>
 
 </html>
-
-<!--
-TODOS
----
-
-/  Input für abschließende Frage
-   Alle Angaben auf Deutsch/Englisch
-/  Verschiedene Quellen für die audio-Elemente
-   Erklärungen vervollständigen
-/  Validierung der Bewertungen
-/  Datenstruktur zum Senden der Daten 
-
- -->

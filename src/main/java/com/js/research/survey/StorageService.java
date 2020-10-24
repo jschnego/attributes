@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 public class StorageService {
 
     public String toFile(String result) {
-	File record = new File(System.currentTimeMillis() + ".json");
+	File record = new File("results/" + System.currentTimeMillis() + ".json");
 	PrintWriter writer;
 	try {
 	    writer = new PrintWriter(record);
 	    writer.append(result);
 	    writer.flush();
 	    writer.close();
-	} catch (FileNotFoundException e) { }
+	} catch (FileNotFoundException e) {}
 	return record.getAbsolutePath();
     }
 

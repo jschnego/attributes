@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.js.research.survey.StorageService;
@@ -17,6 +19,12 @@ public class StorageServiceTest {
 
     private final StorageService storage = new StorageService();
 
+    @BeforeClass
+    public static void init() {
+	File dir = new File("results");
+	dir.mkdir();
+    }
+    
     @Test
     public void shouldCreateNewFileOnInvocation() throws IOException {
 	String fileName = storage.toFile("{}");
@@ -44,6 +52,12 @@ public class StorageServiceTest {
 	}
 	
 	return builder.toString();
+    }
+    
+    @AfterClass
+    public static void cleanUp() {
+	File dir = new File("results");
+	dir.deleteOnExit();
     }
 
 }

@@ -1,2 +1,4 @@
+com/js/research/Research.class
+com/js/research/survey/SurveyRestController.class
 com/js/research/survey/SurveyController.class
-com/js/research/App.class
+com/js/research/survey/StorageService.class
