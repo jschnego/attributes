@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Experiment</title>
-    <script src="../static/lib/vue.js"></script>
-    <script src="../static/lib/vueperslides.js"></script>
-    <link href="../static/css/vueperslides.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="lib/vue.js"></script>
+    <script src="lib/vueperslides.js"></script>
+    <link href="css/vueperslides.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
                             <p class="centered-text">{{ language.listen }}</p>
                             <div class="audio-container">
                                 <audio controls>
-                                    <source :src="`../static/audio/recording_${i}.mp3`" type="audio/mpeg">
+                                    <source :src="`audio/recording_${i}.mp3`" type="audio/mpeg">
                                 </audio>
                             </div>
                             <p class="centered-text question">{{ language.proficiency }}</p>
@@ -413,15 +413,6 @@
             }
         },
         methods: {
-            postMessage: function () {
-                fetch('/api/store', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: `{'message' : '${this.message}'}`
-                })
-            },
             toGerman: function () {
                 this.language = this.german;
             },
@@ -445,10 +436,16 @@
                 return /^\d{1,2}$/.test(this.estimated);
             },
             submit: function () {
-                this.$refs.slides.next();
-                console.log(this.message);
+                fetch('/api/store', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: `${JSON.stringify(this.message)}`
+                }).then(this.$refs.slides.next);
             },
             updatePersonal: function (e) {
+                fetch(backend)
                 this.message['personal'] = JSON.parse(e);
             },
             updateEvals: function (e) {
@@ -456,7 +453,6 @@
 
                 for (key in evaluation) {
                     let parts = key.split('-');
-                    console.log(parts)
                     if (!this.message[`${parts[1]}`]) {
                         this.message[`${parts[1]}`] = {};
                     }

@@ -148,15 +148,12 @@ audio {
     cursor: pointer;
 }
 
-.estimate {
-}
-
 .flag:hover {
     box-shadow: white 0px 0px 15px;
 }
 #german {
     right: 65px;
-    background-image: url(file:///Users/janschnegotzki/Downloads/Flag_of_Germany.svg);
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg);
 }
 
 #english {
