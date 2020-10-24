@@ -58,7 +58,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide v-for="i in 1" :key="'recording-' + i" title="recording">
+            <vueper-slide v-for="i in 12" :key="'recording-' + i" title="recording">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -68,7 +68,7 @@
                             <p class="centered-text">{{ language.listen }}</p>
                             <div class="audio-container">
                                 <audio controls>
-                                    <source :src="`audio/recording_${i}.mp3`" type="audio/mpeg">
+                                    <source :src="`../static/audio/recording_${i}.mp3`" type="audio/mpeg">
                                 </audio>
                             </div>
                             <p class="centered-text question">{{ language.proficiency }}</p>
@@ -448,7 +448,6 @@
                 }).then(this.$refs.slides.next);
             },
             updatePersonal: function (e) {
-                fetch(backend)
                 this.message['personal'] = JSON.parse(e);
             },
             updateEvals: function (e) {
