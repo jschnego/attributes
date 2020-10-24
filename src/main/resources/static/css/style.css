@@ -46,7 +46,7 @@ input[type=text] {
 }
 
 .pole {
-    width: 30%;
+    width: 25%;
 }
 
 .left-pole {
@@ -90,7 +90,6 @@ input[type=text] {
 }
 
 .evaluations, .personal {
-    width: 80%;
     display: flex;
     justify-content: space-between;
 }
@@ -100,7 +99,7 @@ input[type=text] {
 }
 
 .column {
-    width: 40%;
+    width: 50%;
 }
 
 .hidden {
