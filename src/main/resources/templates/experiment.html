@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Experiment</title>
-    <script src="../static/lib/vue.js"></script>
-    <script src="../static/lib/vueperslides.js"></script>
-    <link href="../static/css/vueperslides.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="lib/vue.js"></script>
+    <script src="lib/vueperslides.js"></script>
+    <link href="css/vueperslides.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                         <div class="vueperslide__title">
                             <h1>{{ language.intro }}</h1>
                         </div>
-                        <div class="vueperslide__content">
+                        <div class="vueperslide__content" @scroll="updateScroll">
                             <p>{{ language.introThanks }}</p>
                             <p>{{ language.following }}</p>
                             <p>{{ language.protection }}</p>
@@ -39,7 +39,7 @@
                         <div class="vueperslide__title">
                             <h1>{{ language.basic }}</h1>
                         </div>
-                        <div class="vueperslide__content">
+                        <div class="vueperslide__content" @scroll="updateScroll">
                             <personal-form :language="language" @update="updatePersonal"></personal-form>
                         </div>
                     </div>
@@ -58,17 +58,17 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide v-for="i in 1" :key="'recording-' + i" title="recording">
+            <vueper-slide v-for="i in 12" :key="'recording-' + i" title="recording">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
                             <h1>#{{ i }}</h1>
                         </div>
-                        <div class="vueperslide__content">
+                        <div class="vueperslide__content" @scroll="updateScroll">
                             <p class="centered-text">{{ language.listen }}</p>
                             <div class="audio-container">
                                 <audio controls>
-                                    <source :src="`../static/audio/recording_${i}.mp3`" type="audio/mpeg">
+                                    <source :src="`audio/recording_${i}.mp3`" type="audio/mpeg">
                                 </audio>
                             </div>
                             <p class="centered-text question">{{ language.proficiency }}</p>
@@ -105,7 +105,7 @@
                         <div class="vueperslide__title">
                             <h1>{{ language[i] }}</h1>
                         </div>
-                        <div class="vueperslide__content">
+                        <div class="vueperslide__content" @scroll="updateScroll">
                             <p class="centered-text">{{ generalSound(i) }}</p>
                             <div class="evaluations">
                                 <div class="left-column column">
@@ -134,7 +134,7 @@
                         <div class="vueperslide__title">
                             <h1>{{ language.conclusion }}</h1>
                         </div>
-                        <div class="vueperslide__content">
+                        <div class="vueperslide__content" @scroll="updateScroll">
                             <p>{{ language.conclusionThanks }} </p>
                             <p>{{ language.concludingQuestion }}</p>
                         </div>
@@ -150,7 +150,7 @@
                         <div class="vueperslide__title">
                             <h1>{{ language.disclosure }}</h1>
                         </div>
-                        <div class="vueperslide__content">
+                        <div class="vueperslide__content" @scroll="updateScroll">
                             <p>{{ language.submitted }} </p>
                             <p>{{ language.explanation }} </p>
                             <p>{{ language.intention }} </p>
@@ -159,6 +159,11 @@
                 </template>
             </vueper-slide>
         </vueper-slides>
+        <div :class="{hidden: scrolled, 'content-left': true}">
+            <svg viewBox="0 0 9 18">
+                <path stroke-linecap="round" d="m1 1 l7 8 -7 8"></path>
+            </svg>
+        </div>
     </div>
 </body>
 <script>
@@ -231,7 +236,7 @@
             }
         },
         template: `<div class="likert">
-                    <p class="top-labels"><span>{{ left }}</span><span>{{ right }}</p>
+                    <p class="top-labels"><span>{{ left }}</span><span>{{ right }}</span></p>
                     <span class="left-pole pole">{{ left }}</span>
                     <div class="choices">
                         <input type="radio" :name="attribute" value="1" class="choice" v-model="selected"/>
@@ -252,6 +257,7 @@
             message: {},
             current: 'intro',
             estimated: '',
+            scrolled: false,
             german: {
                 intro: 'Einführung',
                 introThanks: 'Vielen Dank, dass Sie sich die Zeit nehmen, an diesem Experiment teilzunehmen. Die Durchführung dauert etwa 10-15 Minuten.',
@@ -285,7 +291,7 @@
                 interesting: 'Interessant',
                 english: 'Englisch',
                 german: 'Deutsch',
-                accent: 'Englisch mit einem deutschen Akzent',
+                accent: 'Englisch mit deutschem Akzent',
                 conclusion: 'Abschließend',
                 conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben.',
                 concludingQuestion: 'Bitte geben Sie an, wie viele verschiedene Sprecher Sie in den vorausgegangenen 12 Aufnahmen gehört haben:',
@@ -430,9 +436,16 @@
                 document.querySelectorAll('.vueperslides__arrow--prev')[0].remove();
                 this.$nextArrow.style.display = 'none'
             },
+            updateScroll: function (e) {
+                let target = e.explicitOriginalTarget
+                this.scrolled = target.clientHeight + target.scrollTop > target.scrollHeight - 10;
+            },
             nextSlide: function (e) {
                 this.current = e.currentSlide.title;
                 this.$nextArrow.style.display = 'none';
+                if (e.currentSlide.title != 'expIntro' && e.currentSlide.title != 'conclusion' && e.currentSlide.title != 'disclosure') {
+                    this.scrolled = false;
+                }
                 setTimeout(() => { this.validate() }, 1500)
             },
             validate: function () {

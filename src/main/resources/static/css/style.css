@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     height: 100%;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -16,11 +15,7 @@ body {
     background-image: linear-gradient(#008, #006);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
     width: max-content;
     padding-bottom: 5px;
     border-bottom: 2px solid white;
@@ -31,7 +26,6 @@ p {
     margin-left: 0%;
     margin-right: 0%;
 }
-
 
 input[type=text] {
     margin-bottom: 20%;
@@ -62,7 +56,7 @@ input[type=text] {
 }
 
 .vueperslide__content {
-	overflow: scroll;
+    overflow: scroll;
     width: 80%;
 }
 
@@ -99,11 +93,9 @@ input[type=text] {
     width: 50%;
 }
 
-
 .general {
     margin-top: 20%;
 }
-
 
 .hidden {
     display: none;
@@ -141,7 +133,7 @@ audio {
     position: absolute;
     top: 15px;
     height: 20px;
-    width: 37px; 
+    width: 37px;
     z-index: 100;
     background-size: cover;
     background-repeat: no-repeat;
@@ -155,12 +147,27 @@ audio {
 }
 
 .top-labels {
-    display:none;
+    display: none;
+}
+
+.content-left {
+    vertical-align: middle;
+    stroke: currentColor;
+    fill: none;
+    width: 2.6em;
+    padding: 1em;
+    stroke-width: 1;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    transform: rotate(90deg);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .choices {
     display: inline;
 }
+
 #german {
     right: 65px;
     background-image: url(https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg);
@@ -199,32 +206,32 @@ audio {
     background-color: #AAAAAA;
 }
 
-@media screen and (max-width: 1100px){
-    input[type="text"]{
+@media screen and (min-width: 1101px){
+    .conent-left {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    input[type="text"] {
         margin-bottom: 10%;
     }
-
     h1, h2, h3, h4, h5 {
         font-size: large;
         margin-top: 35px;
     }
-
     .evaluations, .personal {
         display: block;
     }
-
     .column {
         width: 100%;
     }
-
     .vueperslides__arrow--next {
         right: -1em;
     }
-    
     .pole {
         display: none;
     }
-
     .top-labels {
         display: flex;
         justify-content: space-between;
@@ -232,11 +239,9 @@ audio {
         margin-left: auto;
         margin-right: auto;
     }
-
     .likert {
         display: block;
     }
-
     .choices {
         width: 90%;
         margin-left: auto;
