@@ -62,6 +62,7 @@ input[type=text] {
 }
 
 .vueperslide__content {
+	overflow: scroll;
     width: 80%;
 }
 
@@ -94,13 +95,15 @@ input[type=text] {
     justify-content: space-between;
 }
 
+.column {
+    width: 50%;
+}
+
+
 .general {
     margin-top: 20%;
 }
 
-.column {
-    width: 50%;
-}
 
 .hidden {
     display: none;
@@ -116,8 +119,7 @@ audio {
 }
 
 #consent {
-    position: absolute;
-    bottom: 10px;
+    margin-top: 15%;
 }
 
 .vueperslides__fractions {
@@ -150,6 +152,14 @@ audio {
 
 .flag:hover {
     box-shadow: white 0px 0px 15px;
+}
+
+.top-labels {
+    display:none;
+}
+
+.choices {
+    display: inline;
 }
 #german {
     right: 65px;
@@ -187,4 +197,52 @@ audio {
 
 #submit:disabled:hover:active {
     background-color: #AAAAAA;
+}
+
+@media screen and (max-width: 1100px){
+    input[type="text"]{
+        margin-bottom: 10%;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-size: large;
+        margin-top: 35px;
+    }
+
+    .evaluations, .personal {
+        display: block;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .vueperslides__arrow--next {
+        right: -1em;
+    }
+    
+    .pole {
+        display: none;
+    }
+
+    .top-labels {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .likert {
+        display: block;
+    }
+
+    .choices {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
 }

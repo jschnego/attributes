@@ -58,7 +58,7 @@
                     </div>
                 </template>
             </vueper-slide>
-            <vueper-slide v-for="i in 12" :key="'recording-' + i" title="recording">
+            <vueper-slide v-for="i in 1" :key="'recording-' + i" title="recording">
                 <template v-slot:content>
                     <div class="vueperslide__content-wrapper">
                         <div class="vueperslide__title">
@@ -113,7 +113,8 @@
                                         :attribute="'education-' + i" @new-eval="updateEvals" class="general">
                                     </likert>
                                     <likert :left="language.dubious" :right="language.respectable"
-                                        :attribute="'respectability-' + i" @new-eval="updateEvals" class="general"></likert>
+                                        :attribute="'respectability-' + i" @new-eval="updateEvals" class="general">
+                                    </likert>
                                 </div>
                                 <div class="right-column column">
                                     <likert :left="language.harsh" :right="language.soft" :attribute="'sound-' + i"
@@ -230,14 +231,17 @@
             }
         },
         template: `<div class="likert">
+                    <p class="top-labels"><span>{{ left }}</span><span>{{ right }}</p>
                     <span class="left-pole pole">{{ left }}</span>
-                    <input type="radio" :name="attribute" value="1" class="choice" v-model="selected"/>
-                    <input type="radio" :name="attribute" value="2" class="choice" v-model="selected"/>
-                    <input type="radio" :name="attribute" value="3" class="choice" v-model="selected"/>
-                    <input type="radio" :name="attribute" value="4" class="choice" v-model="selected"/>
-                    <input type="radio" :name="attribute" value="5" class="choice" v-model="selected"/>
-                    <input type="radio" :name="attribute" value="6" class="choice" v-model="selected"/>
-                    <input type="radio" :name="attribute" value="7" class="choice" v-model="selected"/>
+                    <div class="choices">
+                        <input type="radio" :name="attribute" value="1" class="choice" v-model="selected"/>
+                        <input type="radio" :name="attribute" value="2" class="choice" v-model="selected"/>
+                        <input type="radio" :name="attribute" value="3" class="choice" v-model="selected"/>
+                        <input type="radio" :name="attribute" value="4" class="choice" v-model="selected"/>
+                        <input type="radio" :name="attribute" value="5" class="choice" v-model="selected"/>
+                        <input type="radio" :name="attribute" value="6" class="choice" v-model="selected"/>
+                        <input type="radio" :name="attribute" value="7" class="choice" v-model="selected"/>
+                    </div>
                     <span class="right-pole pole">{{ right }}</span>
                 </div>`
     });
@@ -281,7 +285,7 @@
                 interesting: 'Interessant',
                 english: 'Englisch',
                 german: 'Deutsch',
-				accent: 'Englisch mit einem deutschen Akzent',
+                accent: 'Englisch mit einem deutschen Akzent',
                 conclusion: 'Abschließend',
                 conclusionThanks: 'Vielen Dank, dass Sie an dem Experiment teilgenommen haben.',
                 concludingQuestion: 'Bitte geben Sie an, wie viele verschiedene Sprecher Sie in den vorausgegangenen 12 Aufnahmen gehört haben:',
@@ -296,7 +300,7 @@
                 intro: 'Introduction',
                 introThanks: 'Thanks for taking the time to participate in this experiment. Completing it takes about 10-15 minutes.',
                 following: 'In the following slides, you will first be asked to provide some basic information. To take the experiment, you will have to consent to your data being used for research purposes and stored for later reference.',
-                protection: 'The collected data is anonymized and can in no way be associated with you personally, it serves solely as a means to spot how answers vary across different groups of people. They are stored on a server in the EU for the time of this experiment (about 2 weeks) and on the researcher\'s personal device afterwards.',
+                protection: 'They are stored on a server in the EU for the time of this experiment (about 2 weeks) and on the researcher\'s personal device afterwards.The collected data is anonymized and can in no way be associated with you personally, it serves solely as a means to spot how answers vary across different groups of people. They are stored on a server in the EU for the time of this experiment (about 2 weeks) and on the researcher\'s personal device afterwards.',
                 consent: 'I give my consent that the answers I give in the following experiment may be used for academic purposes and stored afterwards',
                 basic: 'Participant\'s basic information',
                 age: 'What is your age?',
@@ -325,7 +329,7 @@
                 interesting: 'Interesting',
                 english: 'English',
                 german: 'German',
-				accent: 'English with a German accent',
+                accent: 'English with a German accent',
                 conclusion: 'Conclusion',
                 conclusionThanks: 'Thanks for having completed the experiment!',
                 concludingQuestion: 'Please indicate below how many different speakers you have heard in the preceding 12 recordings:',
@@ -404,7 +408,7 @@
                     }
                     return value;
                 },
-                submit: function () {
+                conclusion: function () {
                     //No validation needed for this explanatory slide
                     return false;
                 },
@@ -438,7 +442,7 @@
                 return /^\d{1,2}$/.test(this.estimated);
             },
             submit: function () {
-				console.log(this.message);
+                console.log(this.message);
                 fetch('/api/store', {
                     method: 'POST',
                     headers: {
@@ -471,8 +475,8 @@
             },
             generalSound: function (lang) {
                 return this.language === this.english ?
-						`How does a native ${lang === 'accent' ? 'German ' : '' }speaker speaking ${this.language[lang]} sound to you?` :
-						`Wie klingt ein ${lang === 'accent' ? 'deutscher ' : ''}Muttersprachler, der ${this.language[lang]} spricht, für Sie?`;
+                    `How does a native ${lang === 'accent' ? 'German ' : ''}speaker speaking ${this.language[lang]} sound to you?` :
+                    `Wie klingt ein ${lang === 'accent' ? 'deutscher ' : ''}Muttersprachler, der ${this.language[lang]} spricht, für Sie?`;
             }
         },
         created: function () {

@@ -18,7 +18,10 @@ public class StorageService {
 	    writer.append(result);
 	    writer.flush();
 	    writer.close();
-	} catch (FileNotFoundException e) {}
+	    System.out.println(">>>>> New result written to " + record.getPath());
+	} catch (FileNotFoundException e) {
+	    e.printStackTrace();
+	}
 	return record.getAbsolutePath();
     }
 
