@@ -1,0 +1,136 @@
+{
+  "1": {
+    "proficiency": "2",
+    "education": "5",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "6"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "6",
+    "interest": "4",
+    "correctness": "4"
+  },
+  "3": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "4",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "4": {
+    "proficiency": "4",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "5": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "3"
+  },
+  "6": {
+    "proficiency": "2",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "2",
+    "sound": "6",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "7": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "4",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "10": {
+    "proficiency": "2",
+    "education": "5",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "2",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "11": {
+    "proficiency": "3",
+    "education": "5",
+    "eloquence": "6",
+    "respectability": "2",
+    "sound": "2",
+    "correctness": "5",
+    "interest": "2"
+  },
+  "12": {
+    "proficiency": "1",
+    "education": "6",
+    "eloquence": "2",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "personal": {
+    "age": "25",
+    "residence": "Singapore",
+    "primary": "English",
+    "profession": "Business Owner",
+    "contact": "10"
+  },
+  "english": {
+    "education": "7",
+    "respectability": "6",
+    "sound": "3",
+    "interest": "6"
+  },
+  "german": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "3",
+    "interest": "7"
+  },
+  "accent": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "5",
+    "interest": "6"
+  },
+  "estimation": "2"
+}

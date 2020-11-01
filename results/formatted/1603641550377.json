@@ -1,0 +1,136 @@
+{
+  "1": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "7",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "7",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "3": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "3",
+    "correctness": "6",
+    "interest": "6"
+  },
+  "4": {
+    "proficiency": "3",
+    "education": "2",
+    "eloquence": "2",
+    "respectability": "2",
+    "sound": "4",
+    "correctness": "2",
+    "interest": "1"
+  },
+  "5": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "6": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "6",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "7": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "7",
+    "interest": "5"
+  },
+  "8": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "3",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "10": {
+    "proficiency": "1",
+    "education": "1",
+    "eloquence": "1",
+    "respectability": "1",
+    "sound": "2",
+    "correctness": "1",
+    "interest": "1"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "2",
+    "correctness": "6",
+    "interest": "3"
+  },
+  "12": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "1",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "personal": {
+    "age": "36",
+    "residence": "Deutschland",
+    "primary": "Deutsch",
+    "profession": "Nichts",
+    "contact": "0"
+  },
+  "english": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "4"
+  },
+  "german": {
+    "education": "5",
+    "respectability": "6",
+    "sound": "5",
+    "interest": "5"
+  },
+  "accent": {
+    "education": "4",
+    "respectability": "5",
+    "sound": "3",
+    "interest": "5"
+  },
+  "estimation": "1"
+}

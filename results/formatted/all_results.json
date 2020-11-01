@@ -1,0 +1,1782 @@
+[
+{
+  "1": {
+    "proficiency": "2",
+    "education": "3",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "2": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "3",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "3": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "4": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "3"
+  },
+  "5": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "6": {
+    "proficiency": "6",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "7": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "3"
+  },
+  "8": {
+    "proficiency": "1",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "9": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "10": {
+    "proficiency": "1",
+    "education": "4",
+    "eloquence": "1",
+    "respectability": "2",
+    "sound": "4",
+    "correctness": "3",
+    "interest": "5"
+  },
+  "11": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "3"
+  },
+  "12": {
+    "proficiency": "1",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "3",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "personal": {
+    "age": "27",
+    "residence": "Germany",
+    "primary": "german",
+    "profession": "none",
+    "contact": "2"
+  },
+  "english": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "4"
+  },
+  "german": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "4"
+  },
+  "accent": {
+    "education": "4",
+    "respectability": "2",
+    "sound": "2",
+    "interest": "5"
+  },
+  "estimation": "1"
+}
+,
+{
+  "1": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "7",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "7",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "3": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "3",
+    "correctness": "6",
+    "interest": "6"
+  },
+  "4": {
+    "proficiency": "3",
+    "education": "2",
+    "eloquence": "2",
+    "respectability": "2",
+    "sound": "4",
+    "correctness": "2",
+    "interest": "1"
+  },
+  "5": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "6": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "6",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "7": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "7",
+    "interest": "5"
+  },
+  "8": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "3",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "10": {
+    "proficiency": "1",
+    "education": "1",
+    "eloquence": "1",
+    "respectability": "1",
+    "sound": "2",
+    "correctness": "1",
+    "interest": "1"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "2",
+    "correctness": "6",
+    "interest": "3"
+  },
+  "12": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "1",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "personal": {
+    "age": "36",
+    "residence": "Germany",
+    "primary": "german",
+    "profession": "none",
+    "contact": "0"
+  },
+  "english": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "4"
+  },
+  "german": {
+    "education": "5",
+    "respectability": "6",
+    "sound": "5",
+    "interest": "5"
+  },
+  "accent": {
+    "education": "4",
+    "respectability": "5",
+    "sound": "3",
+    "interest": "5"
+  },
+  "estimation": "1"
+}
+,
+{
+  "1": {
+    "proficiency": "1",
+    "education": "3",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "2"
+  },
+  "2": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "7",
+    "interest": "6"
+  },
+  "3": {
+    "proficiency": "7",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "6",
+    "interest": "6"
+  },
+  "4": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "5": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "3",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "6": {
+    "proficiency": "7",
+    "education": "7",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "7",
+    "interest": "6"
+  },
+  "7": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "7",
+    "education": "7",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "7",
+    "correctness": "7",
+    "interest": "7"
+  },
+  "9": {
+    "proficiency": "5",
+    "education": "7",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "2",
+    "correctness": "7",
+    "interest": "6"
+  },
+  "10": {
+    "proficiency": "2",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "2",
+    "correctness": "4",
+    "interest": "5"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "7",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "5",
+    "correctness": "7",
+    "interest": "7"
+  },
+  "12": {
+    "proficiency": "3",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "3",
+    "correctness": "5",
+    "interest": "6"
+  },
+  "personal": {
+    "age": "27",
+    "residence": "Syria",
+    "primary": "kurdish",
+    "profession": "Software developer",
+    "contact": "7"
+  },
+  "english": {
+    "education": "5",
+    "respectability": "4",
+    "sound": "6",
+    "interest": "7"
+  },
+  "german": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "5",
+    "interest": "6"
+  },
+  "accent": {
+    "education": "4",
+    "respectability": "5",
+    "sound": "1",
+    "interest": "2"
+  },
+  "estimation": "3"
+}
+,
+{
+  "1": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "7",
+    "sound": "2",
+    "correctness": "6",
+    "interest": "1"
+  },
+  "2": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "2",
+    "correctness": "5",
+    "interest": "1"
+  },
+  "3": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "3",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "4": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "1",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "5": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "2",
+    "correctness": "6",
+    "interest": "1"
+  },
+  "6": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "3",
+    "respectability": "5",
+    "sound": "3",
+    "correctness": "5",
+    "interest": "2"
+  },
+  "7": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "3",
+    "correctness": "6",
+    "interest": "2"
+  },
+  "8": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "2",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "9": {
+    "proficiency": "6",
+    "education": "5",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "2"
+  },
+  "10": {
+    "proficiency": "2",
+    "education": "2",
+    "eloquence": "1",
+    "respectability": "2",
+    "sound": "1",
+    "correctness": "2",
+    "interest": "1"
+  },
+  "11": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "2",
+    "correctness": "2",
+    "interest": "4"
+  },
+  "12": {
+    "proficiency": "2",
+    "education": "2",
+    "eloquence": "1",
+    "respectability": "1",
+    "sound": "2",
+    "correctness": "2",
+    "interest": "4"
+  },
+  "personal": {
+    "age": "28",
+    "residence": "China",
+    "primary": "chinese",
+    "profession": "Account manager ",
+    "contact": "9"
+  },
+  "english": {
+    "education": "4",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "3"
+  },
+  "german": {
+    "education": "5",
+    "respectability": "4",
+    "sound": "1",
+    "interest": "2"
+  },
+  "accent": {
+    "education": "2",
+    "respectability": "2",
+    "sound": "1",
+    "interest": "1"
+  },
+  "estimation": "1"
+}
+,
+{
+  "1": {
+    "proficiency": "2",
+    "education": "5",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "6"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "6",
+    "interest": "4",
+    "correctness": "4"
+  },
+  "3": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "4",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "4": {
+    "proficiency": "4",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "5": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "3"
+  },
+  "6": {
+    "proficiency": "2",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "2",
+    "sound": "6",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "7": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "4",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "10": {
+    "proficiency": "2",
+    "education": "5",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "2",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "11": {
+    "proficiency": "3",
+    "education": "5",
+    "eloquence": "6",
+    "respectability": "2",
+    "sound": "2",
+    "correctness": "5",
+    "interest": "2"
+  },
+  "12": {
+    "proficiency": "1",
+    "education": "6",
+    "eloquence": "2",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "personal": {
+    "age": "25",
+    "residence": "Singapore",
+    "primary": "english",
+    "profession": "Business Owner",
+    "contact": "10"
+  },
+  "english": {
+    "education": "7",
+    "respectability": "6",
+    "sound": "3",
+    "interest": "6"
+  },
+  "german": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "3",
+    "interest": "7"
+  },
+  "accent": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "5",
+    "interest": "6"
+  },
+  "estimation": "2"
+}
+,
+{
+  "1": {
+    "proficiency": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4"
+  },
+  "2": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "3": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "4": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "5": {
+    "proficiency": "6",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "6": {
+    "proficiency": "6",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "7": {
+    "proficiency": "7",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "8": {
+    "proficiency": "4",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "10": {
+    "proficiency": "2",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "5"
+  },
+  "11": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "12": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "personal": {
+    "age": "30",
+    "residence": "China",
+    "primary": "chinese",
+    "profession": "Consulting ",
+    "contact": "9"
+  },
+  "english": {
+    "education": "6",
+    "respectability": "6",
+    "sound": "6",
+    "interest": "6"
+  },
+  "german": {
+    "education": "6",
+    "respectability": "6",
+    "sound": "6",
+    "interest": "6"
+  },
+  "accent": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "6",
+    "interest": "7"
+  },
+  "estimation": "2"
+}
+,
+{
+  "1": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "2"
+  },
+  "2": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "3": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "4",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "4": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "3",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "5": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "7",
+    "sound": "5",
+    "correctness": "7",
+    "interest": "5"
+  },
+  "6": {
+    "proficiency": "3",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "3"
+  },
+  "7": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "7",
+    "interest": "5"
+  },
+  "8": {
+    "proficiency": "3",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "7",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "10": {
+    "proficiency": "4",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "6"
+  },
+  "11": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "12": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "2",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "personal": {
+    "age": "29",
+    "residence": "Germany",
+    "primary": "german",
+    "profession": "SEA Manager",
+    "contact": "5"
+  },
+  "english": {
+    "education": "6",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "5"
+  },
+  "german": {
+    "education": "5",
+    "respectability": "5",
+    "sound": "4",
+    "interest": "2"
+  },
+  "accent": {
+    "education": "5",
+    "respectability": "5",
+    "sound": "3",
+    "interest": "3"
+  },
+  "estimation": "2"
+}
+,
+{
+  "1": {
+    "proficiency": "1",
+    "education": "2",
+    "eloquence": "2",
+    "respectability": "2",
+    "sound": "7",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "2": {
+    "education": "3",
+    "eloquence": "1",
+    "respectability": "2",
+    "sound": "7",
+    "correctness": "3",
+    "interest": "3",
+    "proficiency": "2"
+  },
+  "3": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "6",
+    "interest": "1"
+  },
+  "4": {
+    "sound": "7",
+    "correctness": "2",
+    "interest": "2",
+    "eloquence": "6",
+    "education": "5",
+    "respectability": "6",
+    "proficiency": "5"
+  },
+  "5": {
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "2",
+    "correctness": "4",
+    "interest": "3",
+    "proficiency": "4"
+  },
+  "6": {
+    "proficiency": "2",
+    "education": "3",
+    "eloquence": "2",
+    "respectability": "3",
+    "sound": "2",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "7": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "4",
+    "correctness": "6",
+    "interest": "6"
+  },
+  "8": {
+    "education": "6",
+    "eloquence": "3",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "7",
+    "proficiency": "4"
+  },
+  "9": {
+    "proficiency": "3",
+    "education": "6",
+    "eloquence": "3",
+    "respectability": "2",
+    "sound": "2",
+    "correctness": "6",
+    "interest": "2"
+  },
+  "10": {
+    "sound": "1",
+    "education": "6",
+    "eloquence": "4",
+    "respectability": "4",
+    "correctness": "2",
+    "interest": "2",
+    "proficiency": "1"
+  },
+  "11": {
+    "proficiency": "4",
+    "education": "6",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "1",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "12": {
+    "proficiency": "1",
+    "education": "2",
+    "eloquence": "2",
+    "respectability": "5",
+    "sound": "2",
+    "correctness": "2",
+    "interest": "1"
+  },
+  "personal": {
+    "age": "28",
+    "residence": "Singapore",
+    "primary": "english",
+    "profession": "Social Media Strategist",
+    "contact": "10"
+  },
+  "english": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "2",
+    "interest": "7"
+  },
+  "german": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "2",
+    "interest": "4"
+  },
+  "accent": {
+    "education": "7",
+    "respectability": "5",
+    "sound": "1",
+    "interest": "7"
+  },
+  "estimation": "1"
+}
+,
+{
+  "1": {
+    "proficiency": "2",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "3",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "3": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "4": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "5": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "6": {
+    "proficiency": "3",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "7": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "3",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "10": {
+    "proficiency": "2",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "4"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "12": {
+    "proficiency": "3",
+    "education": "5",
+    "eloquence": "3",
+    "respectability": "5",
+    "sound": "2",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "personal": {
+    "age": "28",
+    "residence": "Germany",
+    "primary": "german",
+    "profession": "Projektmanager",
+    "contact": "5"
+  },
+  "english": {
+    "education": "7",
+    "respectability": "7",
+    "sound": "7",
+    "interest": "4"
+  },
+  "german": {
+    "education": "6",
+    "respectability": "5",
+    "sound": "2",
+    "interest": "4"
+  },
+  "accent": {
+    "education": "6",
+    "respectability": "6",
+    "sound": "1",
+    "interest": "4"
+  },
+  "estimation": "3"
+}
+,
+{
+  "1": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "3"
+  },
+  "3": {
+    "proficiency": "3",
+    "education": "2",
+    "eloquence": "1",
+    "respectability": "2",
+    "sound": "5",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "4": {
+    "proficiency": "2",
+    "education": "2",
+    "eloquence": "2",
+    "respectability": "3",
+    "sound": "5",
+    "correctness": "2",
+    "interest": "2"
+  },
+  "5": {
+    "proficiency": "5",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "3"
+  },
+  "6": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "7": {
+    "proficiency": "6",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "9": {
+    "proficiency": "6",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "3"
+  },
+  "10": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "correctness": "4",
+    "sound": "4",
+    "interest": "3"
+  },
+  "11": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "2",
+    "respectability": "4",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "4"
+  },
+  "12": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "3",
+    "sound": "3",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "personal": {
+    "age": "32",
+    "residence": "Germany",
+    "primary": "german",
+    "profession": "Engineer",
+    "contact": "5"
+  },
+  "english": {
+    "education": "5",
+    "respectability": "5",
+    "sound": "4",
+    "interest": "3"
+  },
+  "german": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "3"
+  },
+  "accent": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "4"
+  },
+  "estimation": "1"
+}
+,
+{
+  "1": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "4",
+    "interest": "2"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "3"
+  },
+  "3": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "4": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "5": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "6": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "7": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "4",
+    "correctness": "6",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "9": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "3"
+  },
+  "10": {
+    "proficiency": "3",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "2",
+    "sound": "4",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "12": {
+    "proficiency": "2",
+    "education": "3",
+    "eloquence": "3",
+    "respectability": "2",
+    "sound": "3",
+    "correctness": "3",
+    "interest": "2"
+  },
+  "personal": {
+    "age": "35",
+    "residence": "Singapore",
+    "primary": "english",
+    "profession": "Sales",
+    "contact": "8"
+  },
+  "english": {
+    "education": "5",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "3"
+  },
+  "german": {
+    "education": "4",
+    "respectability": "4",
+    "sound": "4",
+    "interest": "4"
+  },
+  "accent": {
+    "education": "5",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "3"
+  },
+  "estimation": "4"
+}
+,
+{
+  "1": {
+    "proficiency": "5",
+    "education": "7",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "6"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "4"
+  },
+  "3": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "3",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "4": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "5",
+    "sound": "5",
+    "respectability": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "5": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "6",
+    "correctness": "6",
+    "interest": "6"
+  },
+  "6": {
+    "proficiency": "7",
+    "education": "7",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "7",
+    "correctness": "7",
+    "interest": "7"
+  },
+  "7": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "8": {
+    "proficiency": "7",
+    "education": "7",
+    "eloquence": "7",
+    "respectability": "7",
+    "sound": "7",
+    "correctness": "7",
+    "interest": "7"
+  },
+  "9": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "10": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "correctness": "5",
+    "interest": "5",
+    "sound": "5"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "5",
+    "correctness": "5"
+  },
+  "12": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "5",
+    "correctness": "5"
+  },
+  "personal": {
+    "age": "34",
+    "residence": "Singapore",
+    "primary": "english",
+    "profession": "Sales",
+    "contact": "10"
+  },
+  "english": {
+    "education": "6",
+    "respectability": "6",
+    "sound": "6",
+    "interest": "6"
+  },
+  "german": {
+    "education": "6",
+    "respectability": "6",
+    "sound": "6",
+    "interest": "6"
+  },
+  "accent": {
+    "education": "6",
+    "respectability": "6",
+    "sound": "6",
+    "interest": "6"
+  },
+  "estimation": "5"
+}
+,
+{
+  "1": {
+    "proficiency": "7",
+    "education": "5",
+    "eloquence": "5",
+    "respectability": "4",
+    "sound": "4",
+    "correctness": "4",
+    "interest": "5"
+  },
+  "2": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "5",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4",
+    "respectability": "5"
+  },
+  "3": {
+    "proficiency": "3",
+    "education": "3",
+    "eloquence": "4",
+    "respectability": "3",
+    "sound": "4",
+    "correctness": "3",
+    "interest": "3"
+  },
+  "4": {
+    "proficiency": "4",
+    "education": "4",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "3",
+    "correctness": "4",
+    "interest": "3"
+  },
+  "5": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "5",
+    "interest": "3",
+    "correctness": "4"
+  },
+  "6": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "6",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "7": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "8": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "9": {
+    "proficiency": "5",
+    "education": "5",
+    "eloquence": "4",
+    "respectability": "4",
+    "sound": "5",
+    "correctness": "5",
+    "interest": "4"
+  },
+  "10": {
+    "proficiency": "6",
+    "education": "5",
+    "eloquence": "6",
+    "respectability": "5",
+    "sound": "6",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "11": {
+    "proficiency": "5",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "6",
+    "sound": "5",
+    "correctness": "6",
+    "interest": "5"
+  },
+  "12": {
+    "proficiency": "6",
+    "education": "6",
+    "eloquence": "5",
+    "respectability": "5",
+    "sound": "4",
+    "correctness": "5",
+    "interest": "5"
+  },
+  "personal": {
+    "age": "33",
+    "residence": "Malaysia",
+    "primary": "cantonese",
+    "profession": "Sales",
+    "contact": "8"
+  },
+  "english": {
+    "education": "6",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "5"
+  },
+  "german": {
+    "education": "5",
+    "respectability": "5",
+    "sound": "5",
+    "interest": "4"
+  },
+  "accent": {
+    "education": "5",
+    "respectability": "5",
+    "sound": "4",
+    "interest": "4"
+  },
+  "estimation": "1"
+}
+]
