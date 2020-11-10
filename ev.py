@@ -1,6 +1,12 @@
 import json
 import numpy
 
+def get_estimates():
+    evaluations = []
+    for rec in data:
+        evaluations.append(int(rec['estimation']))
+    return evaluations
+
 def get_list_for(index, attribute):
     evaluations = []
     for rec in data:
@@ -31,9 +37,11 @@ def get_averages_for_all(attribute):
     return averages
     
 
-def print_averages_for_general(attribute):
+def get_averages_for_general(attribute):
+    values = []
     for i in ['english', 'german', 'accent']:
-        print(average_value_for(i, attribute))
+        values.append(average_value_for(i, attribute))
+    return values
 
 def print_diff_of_averages_for_all(attribute):
     for i in range(1, len(data) + 1, 2):
